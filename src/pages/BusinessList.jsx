@@ -33,7 +33,7 @@ function BusinessList () {
                 <div key={business._id}>
                     <Link to={`/businesses/${business._id}`}>
                         <h3>{business.name}</h3>
-                        <img src={`${business.imageUrl}`} alt="business image" />
+                        <img src={business.imageUrl} alt="business image" />
                         <p>{business.location}</p>
                     </Link> 
                 </div>) 
