@@ -59,14 +59,13 @@ function BusinessDetails () {
             {loading && <p>Loading...</p>}
             {error && <p>Error fetching business from database...</p>}
 
-
+            <hr />
             {currentBusiness
                 ? (
                     <div key={currentBusiness._id}>
                         <h3>{currentBusiness.name}</h3>
                         <h4>A {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
                         <img src={currentBusiness.imageURL} alt="business image" />
-                        <hr />
                         <h4>Description:</h4>
                         <p>{currentBusiness.description}</p>
                         <hr />
@@ -85,11 +84,12 @@ function BusinessDetails () {
             {currentReviews && currentReviews.length > 0 
                 ? (currentReviews.map((review) => {
                     return(
+                        
                         <div key={review._id}>
                             <p>{review.title}</p>
-                            <p>{review.author.name}</p>
-                            <hr />
+                            <p>Written by:{review.author.name}</p>
                             <p>{review.text}</p>
+                            <hr />
                         </div>
                     )
                 }))
