@@ -8,14 +8,15 @@ function ReviewForm({ getSpecificBusinessReviews }) {
     const [ title, setTitle ] = useState("");
     const [ text, setText ] = useState("");
     const [ rating, setRating ] = useState("");
-    const { businessId } = useParams;
+    const { businessId } = useParams();
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const requestBody = {title, text, rating, author: user._id, business: businessId};
+        console.log(requestBody)
 
         reviewService.createReview(businessId, requestBody)
             .then((response) => {navigate(`/businesses/${businessId}`)})
@@ -39,7 +40,6 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                             required
                         />
                 </label>
-                <hr />
 
                 <label>
                     Review
@@ -52,7 +52,6 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                             required
                         />
                 </label>
-                <hr />
 
                 <label>
                     Rating
@@ -74,6 +73,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                 </label>
 
                 <button type="submit">Submit rating</button>
+                <hr />
 
             </form>
         </>
