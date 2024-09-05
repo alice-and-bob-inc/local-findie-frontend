@@ -70,11 +70,11 @@ function BusinessDetails () {
                         <h4>Description:</h4>
                         <p>{currentBusiness.description}</p>
                         <hr />
-                        {currentBusiness.openingHours && currentBusiness.openingHours.map((openingHours) => {
+                        {/* {currentBusiness.openingHours && currentBusiness.openingHours.map((openingHours) => {
                             return(
                                 <p key={openingHours}>{openingHours}</p>
                             )
-                        })}
+                        })} */}
                     </div>
                 )
                 

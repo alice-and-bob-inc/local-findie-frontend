@@ -50,18 +50,15 @@ function CreateBusiness() {
   };
 
   const renderOpeningHours = () => {
-    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     return days.map((day) => (
       <div key={day}>
-        <label>{day}:</label>
+        <label>{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
         <label>From:
           <input
             type="time"
             value={openingHours[`${day}From`]}
             onChange={(e) => handleOpeningHoursChange(day, "From", e.target.value)}
-            min="06:00"
-            max="23:00"
-            required
           />
         </label>
         <label>Till:
@@ -69,9 +66,6 @@ function CreateBusiness() {
             type="time"
             value={openingHours[`${day}Till`]}
             onChange={(e) => handleOpeningHoursChange(day, "Till", e.target.value)}
-            min="06:00"
-            max="23:00"
-            required
           />
         </label>
         <hr />
