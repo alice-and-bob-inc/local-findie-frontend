@@ -10,7 +10,22 @@ function EditBusiness () {
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [foundedYear, setFoundedYear] = useState("");
-  const [openingHours, setOpeningHours] = useState("");
+  const [openingHours, setOpeningHours] = useState({
+    monFrom: "",
+    monTill: "",
+    tueFrom: "",
+    tueTill: "",
+    wedFrom: "",
+    wedTill: "",
+    thuFrom: "",
+    thuTill: "",
+    friFrom: "",
+    friTill: "",
+    satFrom: "",
+    satTill: "",
+    sunFrom: "",
+    sunTill: "",
+  });
 
   const { businessId } = useParams();
   const navigate = useNavigate();
@@ -50,6 +65,37 @@ function EditBusiness () {
             navigate(`/businesses/${businessId}`);
         })
         .catch((error) => console.log(error));
+  };
+
+  const handleOpeningHoursChange = (day, type, value) => {
+    setOpeningHours((prev) => ({
+      ...prev,
+      [`${day}${type}`]: value,
+    }));
+  };
+
+  const renderOpeningHours = () => {
+    const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+    return days.map((day) => (
+      <div key={day}>
+        <label>{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
+        <label>From:
+          <input
+            type="time"
+            value={openingHours[`${day}From`]}
+            onChange={(e) => handleOpeningHoursChange(day, "From", e.target.value)}
+          />
+        </label>
+        <label>Till:
+          <input
+            type="time"
+            value={openingHours[`${day}Till`]}
+            onChange={(e) => handleOpeningHoursChange(day, "Till", e.target.value)}
+          />
+        </label>
+        <hr />
+      </div>
+    ));
   };
 
 
@@ -140,17 +186,7 @@ function EditBusiness () {
         </label>
         <hr />
 
-        <label>
-          Opening Hours
-          <input
-            type="text"
-            name="openingHours"
-            placeholder="Monday to Saturday - From 09:00 to 21:00"
-            value={openingHours}
-            onChange={(e) => setOpeningHours(e.target.value)}
-          />
-        </label>
-        <hr />
+        {renderOpeningHours()}
 
         <button type="submit">Update</button>
       </form>

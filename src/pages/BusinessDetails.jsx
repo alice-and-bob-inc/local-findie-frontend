@@ -69,11 +69,11 @@ function BusinessDetails () {
                         <h4>Description:</h4>
                         <p>{currentBusiness.description}</p>
                         <hr />
-                        {/* {currentBusiness.openingHours && currentBusiness.openingHours.map((openingHours) => {
-                            return(
-                                <p key={openingHours}>{openingHours}</p>
-                            )
-                        })} */}
+                        {currentBusiness.openingHours && Object.entries(currentBusiness.openingHours).map(([day, hours]) => {
+                            return (
+                                <p key={day}>{day}: {hours}</p>
+                            );
+                        })}
                     </div>
                 )
                 
