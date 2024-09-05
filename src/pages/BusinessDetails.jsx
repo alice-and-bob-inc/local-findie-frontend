@@ -82,7 +82,7 @@ function BusinessDetails () {
             }
 
 
-            {currentReviews && !loading 
+            {currentReviews && currentReviews.length > 0 
                 ? (currentReviews.map((review) => {
                     return(
                         <div key={review._id}>
@@ -96,7 +96,7 @@ function BusinessDetails () {
                 : (<p>No reviews found for this business, leave a review above!</p>)
             }
 
-            <ReviewForm/>
+            <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>
 
             {/* .................................................................................
             Implement conditional rendering to show EDIT and DELETE only if the user is logged in

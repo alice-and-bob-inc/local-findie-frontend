@@ -10,7 +10,23 @@ function CreateBusiness() {
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
   const [foundedYear, setFoundedYear] = useState("");
-  const [openingHours, setOpeningHours] = useState("");
+  const [openingHours, setOpeningHours] = useState({
+    monFrom: "",
+    monTill: "",
+    tueFrom: "",
+    tueTill: "",
+    wedFrom: "",
+    wedTill: "",
+    thuFrom: "",
+    thuTill: "",
+    friFrom: "",
+    friTill: "",
+    satFrom: "",
+    satTill: "",
+    sunFrom: "",
+    sunTill: "",
+  });
+
 
   const navigate = useNavigate();
 
@@ -24,6 +40,43 @@ function CreateBusiness() {
             navigate("/businesses");
         })
         .catch((error) => console.log(error));
+  };
+
+  const handleOpeningHoursChange = (day, type, value) => {
+    setOpeningHours((prev) => ({
+      ...prev,
+      [`${day}${type}`]: value,
+    }));
+  };
+
+  const renderOpeningHours = () => {
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    return days.map((day) => (
+      <div key={day}>
+        <label>{day}:</label>
+        <label>From:
+          <input
+            type="time"
+            value={openingHours[`${day}From`]}
+            onChange={(e) => handleOpeningHoursChange(day, "From", e.target.value)}
+            min="06:00"
+            max="23:00"
+            required
+          />
+        </label>
+        <label>Till:
+          <input
+            type="time"
+            value={openingHours[`${day}Till`]}
+            onChange={(e) => handleOpeningHoursChange(day, "Till", e.target.value)}
+            min="06:00"
+            max="23:00"
+            required
+          />
+        </label>
+        <hr />
+      </div>
+    ));
   };
 
 
@@ -115,17 +168,7 @@ function CreateBusiness() {
         </label>
         <hr />
 
-        <label>
-          Opening Hours
-          <input
-            type="number"
-            name="openingHours"
-            placeholder="Monday to Saturday - From 09:00 to 21:00"
-            value={openingHours}
-            onChange={(e) => setOpeningHours(e.target.value)}
-          />
-        </label>
-        <hr />
+        {renderOpeningHours()}
 
         <button type="submit">Add</button>
       </form>
