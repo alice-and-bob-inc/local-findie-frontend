@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import businessService from "../services/business.services";
 
 function CreateBusiness() {
 
@@ -17,9 +17,9 @@ function CreateBusiness() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newBusiness = { name, image, description, location, category, foundedYear, openingHours };
+    const requestBody = { name, image, description, location, category, foundedYear, openingHours };
 
-    axios.post ("http://localhost:5005/api/businesses", newBusiness)
+    businessService.createBusiness(requestBody)
         .then((response) => {
             navigate("/businesses");
         })

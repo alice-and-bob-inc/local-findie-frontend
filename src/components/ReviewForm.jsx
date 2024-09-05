@@ -1,7 +1,7 @@
 
 
+function ReviewForm() {
 
-function ReviewFormComponent() {
     return(
         <>
             <p>form</p>
@@ -9,4 +9,4 @@ function ReviewFormComponent() {
     )
 }
 
-export default ReviewFormComponent;
+export default ReviewForm;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import businessService from "../services/business.services";
 
 function EditBusiness () {
 
@@ -17,22 +17,18 @@ function EditBusiness () {
 
 
   useEffect( () => {
-    axios.get(`http://localhost:5005/api/businesses/${businessId}`)
+    businessService.getBusiness(businessId)
       .then((response) =>{
           const currentBusiness = response.data;
 
-          {/* ......................................................................
-            When some info is not provided, the state is set to undefined. Fix that!
-            ........................................................................*/}
-
           if(currentBusiness) {
-            setName(currentBusiness.name);
-            // setImage(currentBusiness.image);
-            // setDescription(currentBusiness.description);
-            setLocation(currentBusiness.location);
-            setCategory(currentBusiness.category);
-            // setFoundedYear(currentBusiness.foundedYear);
-            // setOpeningHours(currentBusiness.openingHours)
+            currentBusiness.name && setName(currentBusiness.name);
+            currentBusiness.image && setImage(currentBusiness.image);
+            currentBusiness.description && setDescription(currentBusiness.description);
+            currentBusiness.location && setLocation(currentBusiness.location);
+            currentBusiness.category && setCategory(currentBusiness.category);
+            currentBusiness.foundedYear && setFoundedYear(currentBusiness.foundedYear);
+            currentBusiness.openingHours && setOpeningHours(currentBusiness.openingHours)
           }
           else {
             console.log("Error trying to fetch a specific business")
@@ -47,9 +43,9 @@ function EditBusiness () {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newBusiness = { name, image, description, location, category, foundedYear, openingHours };
+    const requestBody = { name, image, description, location, category, foundedYear, openingHours };
 
-    axios.put(`http://localhost:5005/api/businesses/${businessId}`, newBusiness)
+    businessService.updateBusiness(businessId, requestBody)
         .then((response) => {
             navigate(`/businesses)/${businessId}`);
         })
