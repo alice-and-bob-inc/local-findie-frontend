@@ -8,6 +8,7 @@ function BusinessList () {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [query, setQuery] = useState("");
+    // const [ filteredBusinesses, setFilteredBusinesses ] = useState(businesses);
     let filteredBusinesses;
 
 
@@ -30,10 +31,10 @@ function BusinessList () {
     if(Array.isArray(businesses)) {
         filteredBusinesses = businesses.filter( (business) => {
             return  (
-                    business.name.toLowerCase().includes(value.toLowerCase())
-                    || business.category.toLowerCase().includes(value.toLowerCase())
-                    || business.location.toLowerCase().includes(value.toLowerCase())
-                    || business.description.toLowerCase().includes(value.toLowerCase())
+                    business.name.toLowerCase().includes(query.toLowerCase())
+                    || business.category.toLowerCase().includes(query.toLowerCase())
+                    || business.location.toLowerCase().includes(query.toLowerCase())
+                    || business.description.toLowerCase().includes(query.toLowerCase())
             )   
         });
     }
