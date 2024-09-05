@@ -30,12 +30,17 @@ function BusinessList () {
 
     if(Array.isArray(businesses)) {
         filteredBusinesses = businesses.filter( (business) => {
-            return  (
-                    business.name.toLowerCase().includes(query.toLowerCase())
-                    || business.category.toLowerCase().includes(query.toLowerCase())
-                    || business.location.toLowerCase().includes(query.toLowerCase())
-                    || business.description.toLowerCase().includes(query.toLowerCase())
-            )   
+            // return  (
+            //         business.name.toLowerCase().includes(query.toLowerCase())
+            //         || business.category.toLowerCase().includes(query.toLowerCase())
+            //         || business.location.toLowerCase().includes(query.toLowerCase())
+            //         || business.description.toLowerCase().includes(query.toLowerCase())
+            // )   
+
+            if(business.name && business.name.toLowerCase().includes(query.toLowerCase())){return true} else
+            if(business.category && business.category.toLowerCase().includes(query.toLowerCase())){return true} else
+            if(business.location && business.location.toLowerCase().includes(query.toLowerCase())){return true} else
+            if(business.description && business.description.toLowerCase().includes(query.toLowerCase())){return true}
         });
     }
     
