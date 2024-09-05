@@ -1,32 +1,35 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
+import authService from "../services/auth.services";
+
 
 function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
   
   const navigate = useNavigate();
 
+  const signUpRequest = (e) => {
+      e.preventDefault();
 
-    const signUpRequest = (e) => {
-        e.preventDefault();
-
-        const newUser = {
-            name, email, password
-        }
-        
-        axios.post("http://localhost:5005/auth/signup", newUser)
-            .then((response) => {
-                console.log("succesfully signed up!")
-                navigate("/login");
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-            
-    }
+      const requestBody = {
+          name, email, password
+      }
+      
+      authService.signup(requestBody)
+          .then((response) => {
+              console.log("succesfully signed up!")
+              navigate("/login");
+          })
+          .catch((error) => {
+              console.log(error)
+              setErrorMessage(error.response.data.message)
+          })
+          
+  }
 
 
   return (
@@ -66,6 +69,8 @@ function SignupPage() {
 
         <button type="submit" >Sign Up</button>
       </form>
+
+      {errorMessage && <p>{errorMessage}</p>}
     </>
   );
 }
