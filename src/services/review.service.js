@@ -3,7 +3,7 @@ import axios from "axios";
 class ReviewService{
     constructor() {
         this.api = axios.create({
-            baseURL: import.meta.env.SERVER_URL || import.meta.env.API_URL
+            baseURL: import.meta.env.SERVER_URL || "http://localhost:5005"
         });
 
         this.api.interceptors.request.use(config => {
