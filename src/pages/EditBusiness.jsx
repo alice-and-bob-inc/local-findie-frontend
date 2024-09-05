@@ -47,7 +47,7 @@ function EditBusiness () {
 
     businessService.updateBusiness(businessId, requestBody)
         .then((response) => {
-            navigate(`/businesses)/${businessId}`);
+            navigate(`/businesses/${businessId}`);
         })
         .catch((error) => console.log(error));
   };
