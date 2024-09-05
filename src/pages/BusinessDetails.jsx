@@ -11,7 +11,8 @@ function BusinessDetails () {
     const [ error, setError ] = useState(null);
     const { businessId } = useParams();
 
-
+    const navigate = useNavigate();
+    
     const getSpecificBusiness = () => {
         businessService.getBusiness(businessId)
             .then((response) => {
