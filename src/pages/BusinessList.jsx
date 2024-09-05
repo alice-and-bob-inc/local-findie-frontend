@@ -46,8 +46,8 @@ function BusinessList () {
                 <input value={query} type="search" onChange={e => setQuery(e.target.value)}/>
             </div>
 
-            {Array.isArray(businesses) && businesses.length > 0 
-            ? businesses.map( (business) => {
+            {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
+            ? filteredBusinesses.map( (business) => {
                 return (
                 <div key={business._id}>
                     <Link to={`/businesses/${business._id}`}>
