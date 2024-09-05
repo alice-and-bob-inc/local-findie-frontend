@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import ReviewFormComponent from "../components/ReviewFormComponent";
+import ReviewForm from "../components/ReviewForm";
+import businessService from "../services/business.services";
+import reviewService from "../services/review.service";
 
 function BusinessDetails () {
     const [ currentBusiness, setCurrentBusiness ] = useState(null);
@@ -12,7 +13,7 @@ function BusinessDetails () {
 
 
     const getSpecificBusiness = () => {
-        axios.get(`http://localhost:5005/api/businesses/${businessId}`)
+        businessService.getBusiness(businessId)
             .then((response) => {
                 setCurrentBusiness(response.data);
                 setLoading(false);
@@ -24,7 +25,7 @@ function BusinessDetails () {
     };
 
     const getSpecificBusinessReviews = () => {
-        axios.get(`http://localhost:5005/api/businesses/${businessId}/reviews`)
+        reviewService.getReviews(businessId)
             .then((response) => {
                 setCurrentReviews(response.data);
                 setLoading(false);
@@ -42,7 +43,8 @@ function BusinessDetails () {
 
 
     const deleteBusiness = () => {
-        axios.delete(`http://api/businesses/${businessId}`)
+        
+        businessService.deleteBusiness(businessId)
             .then((response) => {
                 navigate("/businesses");
             })
@@ -93,7 +95,7 @@ function BusinessDetails () {
                 : (<p>No reviews found for this business, leave a review above!</p>)
             }
 
-            <ReviewFormComponent/>
+            <ReviewForm/>
 
             {/* .................................................................................
             Implement conditional rendering to show EDIT and DELETE only if the user is logged in
