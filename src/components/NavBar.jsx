@@ -8,7 +8,7 @@ function NavBar () {
 
     return (
         <>
-            <nav className="bg-green-300 px-5 flex justify-end">
+            <nav className="bg-green-300 px-5 flex justify-end fixed top-0 min-w-full">
                 <NavLink className="px-4 py-4 hover:bg-green-400" to="/">Home</NavLink>
                 <NavLink className="px-4 py-4 hover:bg-green-400" to="/businesses">Businesses</NavLink>
                 <NavLink className="px-4 py-4 hover:bg-green-400" to="/businesses/create">Add Business</NavLink>

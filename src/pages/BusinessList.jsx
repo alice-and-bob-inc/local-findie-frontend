@@ -51,40 +51,35 @@ function BusinessList () {
         } else  switch (business.category) {
                 case "restaurant":
                     return defaultImageRestaurant;
-                    break;
                 case "bookstore":
                     return defaultImageBookstore;
-                    break;
                 case "coffeeshop":
                     return defaultImageCoffeeshop;
-                    break;
                 case "arcade":
                     return defaultImageArcade;
-                    break;
                 case "fair":
                     return defaultImageFair; 
-                    break;
             }
     }
 
     return (
-        <div className="mx-5 min-h-full">
-            <div className="flex-wrap py-5 px-5 bg-slate-300 max-w-xs my-5 mx-2 rounded-md">
+        <div className="flex-col mx-5 h-full w-full pt-14">
+            <div className="flex py-3 px-5 bg-slate-300 max-w-xs h-12 my-5 mx-2 rounded-md">
                 <span>Search</span>
                 <input className="mx-5" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
             </div>
-
+            
             <div className="flex">
                 {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                 ? filteredBusinesses.map( (business) => {
                     
                     return (
-                    <div className="card flex hover:bg-green-200 m-2 w-1/4 h-96 justify-center" key={business._id}>
+                    <div className="card box-border hover:bg-green-200 m-2 min-h-96 min-w-72 justify-center" key={business._id}>
                         <Link to={`/businesses/${business._id}`}>
-                            <h3>{business.name}</h3>
-                            <img className="min-w-max" src={getImg(business)} alt="business image" />
-                            <p>{business.location}</p>
-                            <p>{business.category}</p>
+                            <h3 className="my-3">{business.name}</h3>
+                            <img className="min-w-60 min-h-48 object-cover" src={getImg(business)} alt="business image" />
+                            <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
+                            <p className="my-3">{business.location}</p>
                         </Link> 
                     </div>) 
                 }) 
