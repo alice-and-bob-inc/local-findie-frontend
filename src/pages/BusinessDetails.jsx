@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import ReviewForm from "../components/ReviewForm";
 import businessService from "../services/business.services";
 import reviewService from "../services/review.service";
+import { AuthContext } from "../context/auth.context";
 
 function BusinessDetails () {
     const [ currentBusiness, setCurrentBusiness ] = useState(null);
@@ -10,6 +11,7 @@ function BusinessDetails () {
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(null);
     const { businessId } = useParams();
+    const { isLoggedIn } = useContext(AuthContext)
 
     const navigate = useNavigate();
     
@@ -98,15 +100,17 @@ function BusinessDetails () {
 
             <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>
 
-            {/* .................................................................................
-            Implement conditional rendering to show EDIT and DELETE only if the user is logged in
-            .................................................................................. */}
+       
 
-            <Link to={`/businesses/edit/${businessId}`}>
-                <button >Edit Business</button>
-            </Link>
+            {isLoggedIn &&
+                <>
+                    <Link to={`/businesses/edit/${businessId}`}>
+                        <button >Edit Business</button>
+                    </Link>
 
-                <button onClick={deleteBusiness}>Delete Business</button>
+                    <button onClick={deleteBusiness}>Delete Business</button>
+                </>
+            }
 
             <Link to={"/businesses"}>
                 <button>Back to Overview</button>
