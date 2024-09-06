@@ -8,21 +8,21 @@ function NavBar () {
 
     return (
         <>
-            <nav>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/businesses">Businesses</NavLink>
-                <NavLink to="/businesses/create">Add Business</NavLink>
-                <NavLink to="/about">About</NavLink>
+            <nav className="bg-green-300 px-5 flex justify-end">
+                <NavLink className="px-4 py-4 hover:bg-green-400" to="/">Home</NavLink>
+                <NavLink className="px-4 py-4 hover:bg-green-400" to="/businesses">Businesses</NavLink>
+                <NavLink className="px-4 py-4 hover:bg-green-400" to="/businesses/create">Add Business</NavLink>
+                <NavLink className="px-4 py-4 hover:bg-green-400" to="/about">About</NavLink>
                 
                 {!isLoggedIn && (
                     <>
-                        <NavLink to="/signup">SignUp</NavLink>
-                        <NavLink to="/login">Login</NavLink>
+                        <NavLink className="px-4 py-4 hover:bg-green-400" to="/signup">SignUp</NavLink>
+                        <NavLink className="px-4 py-4 hover:bg-green-400" to="/login">Login</NavLink>
                     </>
                 )}
 
                 {isLoggedIn && (
-                    <button onClick={logOutUser}>Log out</button>
+                    <button className="px-4 py-4 hover:bg-green-400" onClick={logOutUser}>Log out</button>
                 )}
             </nav>
         </>

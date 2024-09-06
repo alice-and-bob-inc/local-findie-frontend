@@ -52,18 +52,20 @@ function BusinessList () {
                 <input value={query} type="search" onChange={e => setQuery(e.target.value)}/>
             </div>
 
-            {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
-            ? filteredBusinesses.map( (business) => {
-                return (
-                <div key={business._id}>
-                    <Link to={`/businesses/${business._id}`}>
-                        <h3>{business.name}</h3>
-                        <img src={business.imageUrl} alt="business image" />
-                        <p>{business.location}</p>
-                    </Link> 
-                </div>) 
-            }) 
-            : <p>No businesses found.</p>}
+            <div className="flex">
+                {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
+                ? filteredBusinesses.map( (business) => {
+                    return (
+                    <div className="card flex hover:bg-green-200 m-1" key={business._id}>
+                        <Link to={`/businesses/${business._id}`}>
+                            <h3>{business.name}</h3>
+                            <img src={business.imageUrl} alt="business image" />
+                            <p>{business.location}</p>
+                        </Link> 
+                    </div>) 
+                }) 
+                : <p>No businesses found.</p>}
+            </div>
         </>
     )
 }
