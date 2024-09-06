@@ -77,7 +77,7 @@ function BusinessDetails () {
                     </div>
                 )
                 
-                : (<p>No business found with this Id</p>)  
+                : (navigate("/notfoundpage"))  
             }
 
 
