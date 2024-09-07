@@ -66,7 +66,7 @@ function BusinessList () {
         <div className="min-w-full">
             <div className="fixed top-0 left-7 max-w-xs my-4 z-20">
                 <span>Search</span>
-                <input className="mx-5" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
+                <input className="mx-5 rounded-md px-2" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
             </div>
 
             <div className="pt-20 pb-12 mx-5">
