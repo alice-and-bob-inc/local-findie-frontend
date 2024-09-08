@@ -5,7 +5,7 @@ import businessService from "../services/business.services";
 function EditBusiness () {
 
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
@@ -38,7 +38,7 @@ function EditBusiness () {
 
           if(currentBusiness) {
             currentBusiness.name && setName(currentBusiness.name);
-            currentBusiness.image && setImage(currentBusiness.image);
+            currentBusiness.imageURL && setImageURL(currentBusiness.image);
             currentBusiness.description && setDescription(currentBusiness.description);
             currentBusiness.location && setLocation(currentBusiness.location);
             currentBusiness.category && setCategory(currentBusiness.category);
@@ -123,8 +123,8 @@ function EditBusiness () {
             type="url"
             name="image"
             placeholder="https://example.com/path/to/placeholder-image.jpg"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={imageURL}
+            onChange={(e) => setImageURL(e.target.value)}
           />
         </label>
         <hr />

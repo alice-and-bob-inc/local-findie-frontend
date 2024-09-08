@@ -40,7 +40,7 @@ function LoginPage() {
 
   return (
     <>
-      <form onSubmit={loginRequest}>
+      <form className="m-20" onSubmit={loginRequest}>
         <label>
           E-mail
           <textarea
@@ -49,7 +49,6 @@ function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <hr />
 
         <label>
           Password
@@ -60,7 +59,7 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-
+        
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p>{errorMessage}</p>}

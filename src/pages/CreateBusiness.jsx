@@ -5,7 +5,7 @@ import businessService from "../services/business.services";
 function CreateBusiness() {
 
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [imageURL, setImageURL] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [category, setCategory] = useState("");
@@ -33,7 +33,7 @@ function CreateBusiness() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, image, description, location, category, foundedYear, openingHours };
+    const requestBody = { name, imageURL, description, location, category, foundedYear, openingHours };
 
     businessService.createBusiness(requestBody)
         .then((response) => {
@@ -97,9 +97,9 @@ function CreateBusiness() {
           <input
             type="url"
             name="image"
-            placeholder="https://example.com/path/to/placeholder-image.jpg"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            placeholder="https://example.com/path/to/image.jpg"
+            value={imageURL}
+            onChange={(e) => setImageURL(e.target.value)}
           />
         </label>
         <hr />
