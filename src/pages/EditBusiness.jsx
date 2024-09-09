@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import businessService from "../services/business.services";
 
 function EditBusiness () {
-  const [name, setName] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [category, setCategory] = useState("");
-  const [foundedYear, setFoundedYear] = useState("");
-  const [openingHours, setOpeningHours] = useState({
+  const [ name, setName ] = useState("");
+  const [ imageURL, setImageURL ] = useState("");
+  const [ description, setDescription ] = useState("");
+  const [ location, setLocation ] = useState("");
+  const [ category, setCategory ] = useState("");
+  const [ foundedYear, setFoundedYear ] = useState("");
+  const [ openingHours, setOpeningHours ] = useState({
     monFrom: "",
     monTill: "",
     tueFrom: "",
@@ -38,14 +38,11 @@ function EditBusiness () {
         if (currentBusiness) {
           currentBusiness.name && setName(currentBusiness.name);
           currentBusiness.imageURL && setImageURL(currentBusiness.image);
-          currentBusiness.description &&
-            setDescription(currentBusiness.description);
+          currentBusiness.description && setDescription(currentBusiness.description);
           currentBusiness.location && setLocation(currentBusiness.location);
           currentBusiness.category && setCategory(currentBusiness.category);
-          currentBusiness.foundedYear &&
-            setFoundedYear(currentBusiness.foundedYear);
-          currentBusiness.openingHours &&
-            setOpeningHours(currentBusiness.openingHours);
+          currentBusiness.foundedYear && setFoundedYear(currentBusiness.foundedYear);
+          currentBusiness.openingHours && setOpeningHours(currentBusiness.openingHours);
         } else {
           console.log("Error trying to fetch a specific business");
         }
@@ -85,11 +82,14 @@ function EditBusiness () {
 
   const renderOpeningHours = () => {
     const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
     return days.map((day) => (
+
       <div key={day} className="flex-col">
         <label className=" text-gray-700 text-sm font-bold mb-4">
           {day.charAt(0).toUpperCase() + day.slice(1)}:
         </label>
+
         <label className=" text-gray-700 text-sm font-bold mb-4 px-8">
           From:
           <input
@@ -100,6 +100,7 @@ function EditBusiness () {
             }
           />
         </label>
+
         <label className=" text-gray-700 text-sm font-bold mb-4">
           Till:
           <input
@@ -110,6 +111,7 @@ function EditBusiness () {
             }
           />
         </label>
+        
       </div>
     ));
   };

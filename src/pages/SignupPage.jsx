@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import authService from "../services/auth.services";
 
-
 function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,9 +30,8 @@ function SignupPage() {
           
   }
 
-
   return (
-    <div className="pt-20">
+    <div className="pt-32">
       <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={signUpRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           Name

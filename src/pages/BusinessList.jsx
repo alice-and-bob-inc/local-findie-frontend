@@ -13,7 +13,7 @@ function BusinessList () {
     const [ businesses, setBusinesses ] = useState(null);
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
-    const [query, setQuery] = useState("");
+    const [ query, setQuery ] = useState("");
 
     let filteredBusinesses;
 
@@ -64,9 +64,9 @@ function BusinessList () {
 
     return (
         <div className="min-w-full">
-            <div className="fixed top-0 left-7 max-w-xs my-4 z-20">
+            <div className="fixed top-0 left-7 max-w-md my-4 z-20">
                 <span>Search</span>
-                <input className="mx-5 rounded-md px-2" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
+                <input className="mx-5 min-w-80 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
             </div>
 
             <div className="pt-20 pb-12 mx-5">
@@ -75,7 +75,7 @@ function BusinessList () {
                     ? filteredBusinesses.map( (business) => {
                         
                         return (
-                            <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center" key={business._id}>
+                            <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5">{business.name}</h3>
                                     <img className="min-w-full min-h-48 max-h-48 object-fill" src={getImg(business)} alt="business image" />

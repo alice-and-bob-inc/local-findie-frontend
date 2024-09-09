@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 function NavBar () {
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
-
     return (
         <>
             <nav className="bg-green-300 px-5 flex justify-end fixed top-0 min-w-full z-10 border border-green-400">
