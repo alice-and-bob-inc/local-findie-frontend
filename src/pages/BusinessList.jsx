@@ -13,7 +13,7 @@ function BusinessList () {
     const [ businesses, setBusinesses ] = useState(null);
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
-    const [query, setQuery] = useState("");
+    const [ query, setQuery ] = useState("");
 
     let filteredBusinesses;
 

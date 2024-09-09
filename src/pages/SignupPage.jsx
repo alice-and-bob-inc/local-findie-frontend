@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import authService from "../services/auth.services";
 
-
 function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +29,6 @@ function SignupPage() {
           })
           
   }
-
 
   return (
     <div className="pt-32">
