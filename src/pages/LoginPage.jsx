@@ -62,7 +62,7 @@ function LoginPage() {
           />
         </label>
         
-        <button type="submit" className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Login</button>
+        <button type="submit" className="card block bg-blue-500 hover:bg-blue-700 text-white font-bold m-auto py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Login</button>
       </form>
 
       {errorMessage && <p>{errorMessage}</p>}
@@ -70,7 +70,7 @@ function LoginPage() {
       <div className="flex-col card box-border mx-auto max-w-sm mt-20">
 
         <p className="block text-gray-700 text-lg font-semibold mb-4">Don't have an account yet?</p>
-        <Link className="block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline max-w-40" to="/signup">Sign Up</Link>
+        <Link className="card block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold mx-auto py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline max-w-40" to="/signup">Sign Up</Link>
       
       </div>
 

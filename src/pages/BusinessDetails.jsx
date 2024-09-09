@@ -88,6 +88,14 @@ function BusinessDetails () {
         }
     }
 
+    const displayRating = (rating) => {
+        let stars = "";
+        for(let i=0; i<rating; i++){
+            stars+= "⭐";
+        }
+        return stars;
+    }
+
     return (
         <>  
             <div className="pt-16 flex flex-col items-center container mx-auto p-4">
@@ -98,7 +106,7 @@ function BusinessDetails () {
                     {currentBusiness
                         ? (
                             <div className="flex flex-col items-center">
-                                <h3 className="text-3xl font-semibold">{currentBusiness.name}</h3>
+                                <h3 className="text-3xl  text-gray-700 font-semibold">{currentBusiness.name}</h3>
 
                                 <div key={currentBusiness._id} className="w-full flex justify-around py-5">
                                     <div className="w-5/12">
@@ -106,16 +114,16 @@ function BusinessDetails () {
                                     </div>
 
                                     <div className="px-5 w-4/12">
-                                        <h3 className="text-xl font-semibold">Details</h3>
+                                        <h3 className="text-xl  text-gray-700 font-semibold mb-2">Details</h3>
                                         <h4>A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
-                                        <h4 className="text-xl font-semibold">Description:</h4>
+                                        <h4 className="text-xl  text-gray-700 font-semibold mb-2 mt-7">Description:</h4>
                                         <p>{currentBusiness.description}</p>
                                     </div>
 
                                     <div className="flex flex-col w-3/12">
-                                        <h3 className="text-xl font-semibold">Opening Hours</h3>
+                                        <h3 className="text-xl  text-gray-700 font-semibold mb-2">Opening Hours</h3>
                                         {currentBusiness.openingHours && formatOpeningHours(currentBusiness.openingHours).map((hours, index) => (
-                                            <p key={index}>{hours}</p>
+                                            <p className="py-1" key={index}>{hours}</p>
                                         ))}
                                     </div>
                                 </div>
@@ -130,24 +138,24 @@ function BusinessDetails () {
                     {isLoggedIn &&
                         <>
                             <Link to={`/businesses/edit/${businessId}`}>
-                                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
+                                <button className="card bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
                                     Edit Business
                                 </button>
                             </Link>
 
-                            <button onClick={deleteBusiness} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
+                            <button onClick={deleteBusiness} className="card bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
                                 Delete Business
                             </button>
                         </>
                     }
 
                     <Link to={"/businesses"}>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">Back to Overview</button>
+                        <button className="card bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">Back to Overview</button>
                     </Link>
                 </div>
 
                 <div className="card box-border w-10/12 justify-center m-3 mb-16 flex flex-col items-center">
-                    <h3 className="text-xl font-semibold mb-4">Reviews</h3>
+                    <h3 className="text-2xl text-gray-700 font-semibold mb-4">Reviews</h3>
                     {currentReviews && currentReviews.length > 0 
                         ? (currentReviews.map((review) => {
                             return(
@@ -157,7 +165,7 @@ function BusinessDetails () {
                                     <hr className="my-2"/>
                                     <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
                                     <p className="mt-2">{review.text}</p>
-                                    <p className="mt-2">Rating: {review.rating}</p>
+                                    <p className="mt-2 [text-shadow:_0_3px_3px_rgb(0_0_0_/_0.8),_3px_0_3px_rgb(0_0_0_/_0.8)]">{displayRating(review.rating)}</p>
                                 </div>
                             )
                         }))

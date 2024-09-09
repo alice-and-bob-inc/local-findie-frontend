@@ -80,7 +80,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
 
                 <div className="flex justify-center">
                     <button 
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:shadow-outline" 
+                        className="card bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:shadow-outline" 
                         type="submit"
                     >
                         Submit review

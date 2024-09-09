@@ -180,7 +180,7 @@ function CreateBusiness() {
 
           {renderOpeningHours()}
 
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40" type="submit">
+          <button className="card block bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto py-2 px-4 mt-6 rounded focus:outline-black focus:shadow-outline min-w-40" type="submit">
             Add
           </button>
         </form>
