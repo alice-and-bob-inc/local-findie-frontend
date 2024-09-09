@@ -33,11 +33,12 @@ function SignupPage() {
 
 
   return (
-    <>
-      <form onSubmit={signUpRequest}>
-        <label>
+    <div className="pt-20">
+      <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={signUpRequest}>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Name
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             type="text"
             name="name"
             value={name}
@@ -45,21 +46,21 @@ function SignupPage() {
             required
           />
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           E-mail
           <textarea
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-          <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Password
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             type="text"
             name="pasword"
             value={password}
@@ -67,11 +68,11 @@ function SignupPage() {
           />
         </label>
 
-        <button type="submit" >Sign Up</button>
+        <button type="submit" className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Sign Up</button>
       </form>
 
       {errorMessage && <p>{errorMessage}</p>}
-    </>
+    </div>
   );
 }
 

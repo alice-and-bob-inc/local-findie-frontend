@@ -39,20 +39,22 @@ function LoginPage() {
   };
 
   return (
-    <>
-      <form className="m-20" onSubmit={loginRequest}>
-        <label>
+    <div className="pt-32">
+      <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={loginRequest}>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           E-mail
           <textarea
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Password
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             type="text"
             name="pasword"
             value={password}
@@ -60,14 +62,19 @@ function LoginPage() {
           />
         </label>
         
-        <button type="submit">Login</button>
+        <button type="submit" className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Login</button>
       </form>
+
       {errorMessage && <p>{errorMessage}</p>}
 
-      <p>Don't have an account yet?</p>
-      <Link to="/signup">Sign up</Link>
+      <div className="flex-col card box-border mx-auto max-w-sm mt-20">
 
-    </>
+        <p className="block text-gray-700 text-lg font-semibold mb-4">Don't have an account yet?</p>
+        <Link className="block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline max-w-40" to="/signup">Sign Up</Link>
+      
+      </div>
+
+    </div>
   );
 }
 
