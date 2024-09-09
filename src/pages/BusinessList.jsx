@@ -49,17 +49,17 @@ function BusinessList () {
         if(business.imageURL) {
             return business.imageURL;
         } else  switch (business.category) {
-                case "restaurant":
-                    return defaultImageRestaurant;
-                case "bookstore":
-                    return defaultImageBookstore;
-                case "coffeeshop":
-                    return defaultImageCoffeeshop;
-                case "arcade":
-                    return defaultImageArcade;
-                case "fair":
-                    return defaultImageFair; 
-            }
+            case "restaurant":
+                return defaultImageRestaurant;
+            case "bookstore":
+                return defaultImageBookstore;
+            case "coffeeshop":
+                return defaultImageCoffeeshop;
+            case "arcade":
+                return defaultImageArcade;
+            case "fair":
+                return defaultImageFair; 
+        }
     }
 
     return (
