@@ -5,6 +5,12 @@ import businessService from "../services/business.services";
 import reviewService from "../services/review.service";
 import { AuthContext } from "../context/auth.context";
 
+import defaultImageArcade from "/defaultImageArcade.jpg";
+import defaultImageBookstore from "/defaultImageBookstore.webp";
+import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
+import defaultImageFair from "/defaultImageFair.jpeg";
+import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+
 function BusinessDetails () {
     const [ currentBusiness, setCurrentBusiness ] = useState(null);
     const [ currentReviews, setCurrentReviews ] = useState(null);
@@ -65,6 +71,23 @@ function BusinessDetails () {
         });
     }
 
+    const getImg = (business) => {
+        if(business.imageURL) {
+            return business.imageURL;
+        } else  switch (business.category) {
+            case "restaurant":
+                return defaultImageRestaurant;
+            case "bookstore":
+                return defaultImageBookstore;
+            case "coffeeshop":
+                return defaultImageCoffeeshop;
+            case "arcade":
+                return defaultImageArcade;
+            case "fair":
+                return defaultImageFair; 
+        }
+    }
+
     return (
         <>  
             <div className="pt-16 flex flex-col items-center container mx-auto p-4">
@@ -79,12 +102,12 @@ function BusinessDetails () {
 
                                 <div key={currentBusiness._id} className="w-full flex justify-around py-5">
                                     <div className="w-5/12">
-                                        <img src={currentBusiness.imageURL} alt="business image" className="rounded-lg border-2 border-green-700"/>
+                                        <img src={getImg(currentBusiness)} alt="business image" className="rounded-lg border-2 border-green-700"/>
                                     </div>
 
                                     <div className="px-5 w-4/12">
                                         <h3 className="text-xl font-semibold">Details</h3>
-                                        <h4>A {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
+                                        <h4>A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
                                         <br />
                                         <br />
                                         <h4 className="text-xl font-semibold">Description:</h4>
