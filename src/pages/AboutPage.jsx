@@ -22,7 +22,7 @@ function AboutPage () {
                         <div className="flex justify-center mb-10">
                             <div className="mx-2 card w-5/12 flex flex-col items-center rounded">
                                 <img 
-                                    src="../../public/nico.jpeg" 
+                                    src="../../nico.jpeg" 
                                     alt="Nico" 
                                     className="w-6/12 rounded-lg"
                                 />
@@ -38,7 +38,7 @@ function AboutPage () {
 
                             <div className="mx-2 card w-5/12 flex flex-col items-center rounded">
                                 <img 
-                                    src="../../public/casper.jpeg" 
+                                    src="../../casper.jpeg" 
                                     alt="Casper" 
                                     className="w-6/12 rounded-lg"
                                 />
