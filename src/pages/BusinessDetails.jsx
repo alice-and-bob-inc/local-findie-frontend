@@ -108,13 +108,11 @@ function BusinessDetails () {
                                     <div className="px-5 w-4/12">
                                         <h3 className="text-xl font-semibold">Details</h3>
                                         <h4>A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
-                                        <br />
-                                        <br />
                                         <h4 className="text-xl font-semibold">Description:</h4>
                                         <p>{currentBusiness.description}</p>
                                     </div>
 
-                                    <div className="flex flex-col w-3/12"> {/* justify-center ? */}
+                                    <div className="flex flex-col w-3/12">
                                         <h3 className="text-xl font-semibold">Opening Hours</h3>
                                         {currentBusiness.openingHours && formatOpeningHours(currentBusiness.openingHours).map((hours, index) => (
                                             <p key={index}>{hours}</p>
@@ -157,9 +155,9 @@ function BusinessDetails () {
                                 <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-4 w-full">
                                     <p className="text-lg font-semibold">{review.title}</p>
                                     <hr className="my-2"/>
-                                    <p className="text-sm text-gray-600">Written by:{review.author.name}</p>
+                                    <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
                                     <p className="mt-2">{review.text}</p>
-                                    <hr />
+                                    <p className="mt-2">Rating: {review.rating}</p>
                                 </div>
                             )
                         }))
