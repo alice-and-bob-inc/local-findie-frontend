@@ -60,8 +60,8 @@ function CreateBusiness() {
     const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     return days.map((day) => (
       <div key={day} className="flex-col">
-        <label>{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
-        <label className="p-2">
+        <label className=" text-gray-700 text-sm font-bold mb-4">{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
+        <label className=" text-gray-700 text-sm font-bold mb-4 px-8">
           From:
           <input
             type="time"
@@ -70,8 +70,8 @@ function CreateBusiness() {
               handleOpeningHoursChange(day, "From", e.target.value)
             }
           />
-        </label>
-        <label className="p-2">
+        </label> 
+        <label className=" text-gray-700 text-sm font-bold mb-4">
           Till:
           <input
             type="time"
@@ -86,15 +86,15 @@ function CreateBusiness() {
   };
 
   return (
-    <div className="min-h-full pt-20 pb-12">
-      <div className="card mx-auto max-w-lg">
-        <h3 className="mb-5 text-lg">Add Business</h3>
+    <div className="pt-20 pb-16">
+      <div className="card box-border mx-auto max-w-xl">
+        <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 
-        <form className="flex-col space-y-4" onSubmit={handleSubmit}>
-          <label className="flex-col">
+        <form className="flex-col" onSubmit={handleSubmit}>
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Name
             <input
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               name="name"
               placeholder="Il Gelatto"
@@ -104,10 +104,10 @@ function CreateBusiness() {
             />
           </label>
 
-          <label className="flex-col">
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Image URL
             <input
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="url"
               name="image"
               placeholder="https://example.com/path/to/image.jpg"
@@ -116,10 +116,10 @@ function CreateBusiness() {
             />
           </label>
 
-          <label className="flex-col">
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Description
             <textarea
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="description"
               placeholder="Il Gelatto is the coolest spot for..."
               value={description}
@@ -127,10 +127,10 @@ function CreateBusiness() {
             />
           </label>
 
-          <label className="flex-col">
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Location
             <input
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               name="location"
               placeholder="Amsterdam"
@@ -141,10 +141,10 @@ function CreateBusiness() {
             />
           </label>
 
-          <label className="flex-col">
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Category
             <select
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -161,10 +161,10 @@ function CreateBusiness() {
             </select>
           </label>
 
-          <label className="flex-col">
+          <label className="block text-gray-700 text-sm font-bold mb-4">
             Founded Year
             <input
-              className="block"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="number"
               name="foundedYear"
               placeholder="2015"
@@ -176,7 +176,7 @@ function CreateBusiness() {
 
           {renderOpeningHours()}
 
-          <button className="flex mt-5 text-lg" type="submit">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline min-w-40" type="submit">
             Add
           </button>
         </form>

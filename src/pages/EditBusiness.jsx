@@ -58,7 +58,7 @@ function EditBusiness () {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, image, description, location, category, foundedYear, openingHours };
+    const requestBody = { name, imageURL, description, location, category, foundedYear, openingHours };
 
     businessService.updateBusiness(businessId, requestBody)
         .then((response) => {
@@ -77,36 +77,39 @@ function EditBusiness () {
   const renderOpeningHours = () => {
     const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     return days.map((day) => (
-      <div key={day}>
-        <label>{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
-        <label>From:
+      <div key={day} className="flex-col">
+        <label className=" text-gray-700 text-sm font-bold mb-4">{day.charAt(0).toUpperCase() + day.slice(1)}:</label>
+        <label className=" text-gray-700 text-sm font-bold mb-4 px-8">
+          From:
           <input
             type="time"
             value={openingHours[`${day}From`]}
             onChange={(e) => handleOpeningHoursChange(day, "From", e.target.value)}
           />
         </label>
-        <label>Till:
+        <label className=" text-gray-700 text-sm font-bold mb-4">
+          Till:
           <input
             type="time"
             value={openingHours[`${day}Till`]}
             onChange={(e) => handleOpeningHoursChange(day, "Till", e.target.value)}
           />
         </label>
-        <hr />
       </div>
     ));
   };
 
 
   return (
-    <>
-      <h3>Add Business</h3>
+    <div className="pt-20 pb-16">
+<div className="card box-border mx-auto max-w-xl">
+      <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form className="flex-col" onSubmit={handleSubmit}>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Name
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="name"
             placeholder="Il Gelatto"
@@ -115,11 +118,11 @@ function EditBusiness () {
             required
           />
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Image URL
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="url"
             name="image"
             placeholder="https://example.com/path/to/placeholder-image.jpg"
@@ -127,22 +130,22 @@ function EditBusiness () {
             onChange={(e) => setImageURL(e.target.value)}
           />
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Description
           <textarea
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="description"
             placeholder="Il Gelatto is the coolest spot for..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Location
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="location"
             placeholder="Amsterdam"
@@ -151,11 +154,11 @@ function EditBusiness () {
             required
           />
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Category
           <select
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -171,11 +174,11 @@ function EditBusiness () {
             <option value="fair">Fair</option>
           </select>
         </label>
-        <hr />
 
-        <label>
+        <label className="block text-gray-700 text-sm font-bold mb-4">
           Founded Year
           <input
+            className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="number"
             name="foundedYear"
             placeholder="2015"
@@ -184,13 +187,14 @@ function EditBusiness () {
             min={1900}
           />
         </label>
-        <hr />
 
         {renderOpeningHours()}
 
-        <button type="submit">Update</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline min-w-40" type="submit">Update</button>
       </form>
-    </>
+    </div>
+    </div>
+    
   );
 }
 
