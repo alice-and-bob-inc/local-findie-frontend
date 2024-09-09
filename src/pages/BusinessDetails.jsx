@@ -109,19 +109,19 @@ function BusinessDetails () {
                     {isLoggedIn &&
                         <>
                             <Link to={`/businesses/edit/${businessId}`}>
-                                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-1 rounded focus:outline-none focus:shadow-outline">
+                                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
                                     Edit Business
                                 </button>
                             </Link>
 
-                            <button onClick={deleteBusiness} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-1 rounded focus:outline-none focus:shadow-outline">
+                            <button onClick={deleteBusiness} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">
                                 Delete Business
                             </button>
                         </>
                     }
 
                     <Link to={"/businesses"}>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded focus:outline-none focus:shadow-outline">Back to Overview</button>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded focus:shadow-outline">Back to Overview</button>
                     </Link>
                 </div>
 

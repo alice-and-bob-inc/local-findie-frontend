@@ -38,7 +38,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                         value={title}
                         onChange={(e) => {setTitle(e.target.value)}}
                         required
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                         />
                 </div>
 
@@ -51,7 +51,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                         value={text}
                         onChange={(e) => {setText(e.target.value)}}
                         required
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                     />
                 </div>
 
@@ -65,7 +65,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
                         value={rating}
                         onChange={(e) => {setRating(e.target.value)}}
                         required
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
                         >
                         <option value="" disabled>
                             Select a rating
@@ -80,7 +80,7 @@ function ReviewForm({ getSpecificBusinessReviews }) {
 
                 <div className="flex- items-center justify-between">
                     <button 
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:shadow-outline" 
                         type="submit"
                     >
                         Submit rating
