@@ -75,10 +75,10 @@ function BusinessList () {
                     ? filteredBusinesses.map( (business) => {
                         
                         return (
-                            <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center" key={business._id}>
+                            <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5">{business.name}</h3>
-                                    <img className="min-w-full min-h-48 max-h-48 object-fill hover:scale-105" src={getImg(business)} alt="business image" />
+                                    <img className="min-w-full min-h-48 max-h-48 object-fill" src={getImg(business)} alt="business image" />
                                     <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
                                     <p className="my-3">{business.location}</p>
                                 </Link> 
