@@ -94,7 +94,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Name
             <input
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               type="text"
               name="name"
               placeholder="Il Gelatto"
@@ -107,7 +107,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Image URL
             <input
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               type="url"
               name="image"
               placeholder="https://example.com/path/to/image.jpg"
@@ -119,7 +119,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Description
             <textarea
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               name="description"
               placeholder="Il Gelatto is the coolest spot for..."
               value={description}
@@ -130,7 +130,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Location
             <input
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               type="text"
               name="location"
               placeholder="Amsterdam"
@@ -144,7 +144,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Category
             <select
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -164,7 +164,7 @@ function CreateBusiness() {
           <label className="block text-gray-700 text-sm font-bold mb-4">
             Founded Year
             <input
-              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
               type="number"
               name="foundedYear"
               placeholder="2015"
@@ -176,7 +176,7 @@ function CreateBusiness() {
 
           {renderOpeningHours()}
 
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-none focus:shadow-outline min-w-40" type="submit">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40" type="submit">
             Add
           </button>
         </form>
