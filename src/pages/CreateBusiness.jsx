@@ -9,6 +9,7 @@ function CreateBusiness() {
   const [ location, setLocation ] = useState("");
   const [ category, setCategory ] = useState("");
   const [ foundedYear, setFoundedYear ] = useState("");
+  const [ websiteURL, setWebsiteURL ] = useState("");
   const [ openingHours, setOpeningHours ] = useState({
     monFrom: "",
     monTill: "",
@@ -38,6 +39,7 @@ function CreateBusiness() {
       location,
       category,
       foundedYear,
+      websiteURL,
       openingHours,
     };
 
@@ -175,6 +177,18 @@ function CreateBusiness() {
               value={foundedYear}
               onChange={(e) => setFoundedYear(e.target.value)}
               min={1900}
+            />
+          </label>
+
+          <label className="block text-gray-700 text-sm font-bold mb-4">
+            Webiste URL
+            <input 
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
+              type="text"
+              name="websiteURL"
+              placeholder="https://yourwebsite.com"
+              value={websiteURL}
+              onChange={(e) => setWebsiteURL(e.target.value)}
             />
           </label>
 
