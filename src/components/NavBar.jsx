@@ -10,7 +10,7 @@ function NavBar ({ children }) {
             <nav className="bg-green-300 px-5 flex items-center justify-end fixed top-0 min-w-full z-10 border border-green-400">
                 <div className="flex items-center mr-auto">
                     <NavLink to="/">
-                        <img className="ml-6 h-12 z-22" src="../../local-findie-logoreal.gif" alt="" />
+                        <img className="ml-2 h-12 z-22" src="../../local-findie-logoreal.gif" alt="" />
                     </NavLink>
                     {children}
                 </div>
