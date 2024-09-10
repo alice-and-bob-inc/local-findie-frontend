@@ -7,6 +7,7 @@ import defaultImageBookstore from "/defaultImageBookstore.webp";
 import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
 import defaultImageFair from "/defaultImageFair.jpeg";
 import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+import NavBar from "../components/NavBar";
 
 function BusinessList () {
 
@@ -64,12 +65,14 @@ function BusinessList () {
 
     return (
         <div className="min-w-full">
-            <div className="fixed top-0 left-7 max-w-md my-4 z-20">
-                <span>Search</span>
-                <input className="mx-5 min-w-80 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
-            </div>
+            <NavBar>
+                <div className="max-w-md mx-10 my-4 z-20">
+                    <span>Search</span>
+                    <input className="mx-5 min-w-80 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
+                </div>
+            </NavBar>
 
-            <div className="pt-20 pb-16 mx-5">
+            <div className="pt-24 pb-16 mx-5">
                 <div className="grid grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.map( (business) => {
@@ -84,7 +87,7 @@ function BusinessList () {
                                 </Link> 
                             </div>) 
                         }) 
-                    : <p>No businesses found.</p>}
+                    : <p className="card box-border mx-auto max-h-96 justify-center">No businesses found.</p>}
                 </div>
             </div>
         </div>

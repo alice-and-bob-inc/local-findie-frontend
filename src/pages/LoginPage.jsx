@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.services";
+import NavBar from "../components/NavBar";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -40,6 +41,7 @@ function LoginPage() {
 
   return (
     <div className="pt-32">
+      <NavBar/>
       <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={loginRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           E-mail

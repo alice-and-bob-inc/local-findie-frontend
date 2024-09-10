@@ -10,6 +10,7 @@ import defaultImageBookstore from "/defaultImageBookstore.webp";
 import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
 import defaultImageFair from "/defaultImageFair.jpeg";
 import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+import NavBar from "../components/NavBar";
 
 function BusinessDetails () {
     const [ currentBusiness, setCurrentBusiness ] = useState(null);
@@ -96,7 +97,8 @@ function BusinessDetails () {
 
     return (
         <>  
-            <div className="pt-16 flex flex-col items-center container mx-auto p-4">
+            <NavBar/>
+            <div className="pt-20 flex flex-col items-center container mx-auto p-4">
                 <div className="card box-border w-10/12 min-h-96 m-3 flex">
                     {loading && <p>Loading...</p>}
                     {error && <p>Error fetching business from database...</p>}

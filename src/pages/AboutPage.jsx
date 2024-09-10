@@ -1,10 +1,12 @@
 import { useState } from "react";
+import NavBar from "../components/NavBar";
 
 function AboutPage () {
     const [ showFaces, setShowFaces ] = useState(false);
 
     return (
-        <div className="pt-16 pb-10 flex flex-col items-center container mx-auto text-center">
+        <div className="pt-20 pb-10 flex flex-col items-center container mx-auto text-center">
+            <NavBar/>
             <div className="card box-border w-10/12 min-h-96 m-3 p-12 flex flex-col">
 
                 <p className="pb-8 leading-loose">At Local Findie, we're passionate about connecting you with the best local businesses. Our mission is to make it easier for you to discover and support local gems, from restaurants and shops to services and more. We believe that every local business has a story to tell, and we're here to help you find it.</p>

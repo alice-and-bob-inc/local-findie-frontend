@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import businessService from "../services/business.services";
+import NavBar from "../components/NavBar";
 
 function EditBusiness () {
   const [ name, setName ] = useState("");
@@ -120,7 +121,8 @@ function EditBusiness () {
   };
 
   return (
-    <div className="pt-20 pb-16">
+    <div className="pt-24 pb-16">
+      <NavBar/>
       <div className="card box-border mx-auto max-w-xl">
         <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 

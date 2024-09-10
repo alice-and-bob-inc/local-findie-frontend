@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import authService from "../services/auth.services";
+import NavBar from "../components/NavBar";
 
 function SignupPage() {
   const [name, setName] = useState("");
@@ -32,6 +33,7 @@ function SignupPage() {
 
   return (
     <div className="pt-32">
+      <NavBar/>
       <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={signUpRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           Name
