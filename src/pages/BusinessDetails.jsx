@@ -122,7 +122,7 @@ function BusinessDetails () {
         <>  
             <NavBar/>
             <div className="pt-20 flex flex-col items-center container mx-auto p-4">
-                <div className="card box-border w-10/12 min-h-96 m-3 flex">
+                <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 flex">
                     {loading && <p>Loading...</p>}
                     {error && <p>Error fetching business from database...</p>}
 
@@ -136,23 +136,23 @@ function BusinessDetails () {
                                         <img src={imageSrc} alt="business image" className="rounded-lg border-2 border-green-700"/>
                                     </div>
 
-                                    <div className="px-4 md:px-8 w-full md:w-4/12 mt-4">
-                                        <h3 className="text-2xl text-gray-700 font-semibold mb-2 md:text-3xl">Details</h3>
-                                        <h4 className="text-lg md:text-xl mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
-                                        <h3 className="text-sm md:text-xl text-gray-700 font-semibold mb-2 mt-7">Description:</h3>
-                                        <p>{currentBusiness.description}</p>
+                                    <div className="px-4 md:px-8 w-full md:w-4/12">
+                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2">Details</h3>
+                                        <h4 className="text-md md:text-lg mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
+                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2 mt-7">Description:</h3>
+                                        <p className="text-md md:text-lg mt-2">{currentBusiness.description}</p>
                                         {currentBusiness.websiteURL	&& 
                                             <>
-                                                <h3 className="text-lg md:text-xl font-semibold mt-4">Contact:</h3>
+                                                <h3 className="text-md md:text-lg font-semibold mt-4">Contact:</h3>
                                                 <a className="font-bold text-blue-600" target="_blank" href={currentBusiness.websiteURL}>Website link</a>
                                             </>
                                         }
                                     </div>
 
                                     <div className="flex flex-col md:w-3/12">
-                                        <h3 className="text-lg md:text-xl text-gray-700 font-semibold mb-2">Opening Hours</h3>
+                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2">Opening Hours</h3>
                                         {currentBusiness.openingHours && formatOpeningHours(currentBusiness.openingHours).map((hours, index) => (
-                                            <p className="text-sm md:text-base py-1" key={index}>{hours}</p>
+                                            <p className="text-xs sm:text-sm md:text-base py-1" key={index}>{hours}</p>
                                         ))}
                                     </div>
                                 </div>

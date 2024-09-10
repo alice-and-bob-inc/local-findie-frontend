@@ -38,7 +38,7 @@ function AboutPage () {
                                 </a>
                             </div>
 
-                            <div className="mx-2 card w-full sm:w-5/12 flex flex-col items-center rounded mt-4">
+                            <div className="mx-2 card w-full sm:w-5/12 flex flex-col items-center rounded">
                                 <img 
                                     src="../../casper.jpeg" 
                                     alt="Casper" 
@@ -55,7 +55,7 @@ function AboutPage () {
                             </div>
                         </div>
                         <button 
-                            className="card bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto w-1/2 sm:w-1/4 py-2 px-4 rounded focus:shadow-outline"
+                            className="card bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto w-1/2 md:w-1/3 lg:w-1/4 py-2 px-4 rounded focus:shadow-outline"
                             onClick={() => {setShowFaces(false)}}
                         >
                             Hide parents
@@ -66,7 +66,7 @@ function AboutPage () {
                 : (
                     <div className="flex justify-center">
                         <button 
-                            className="card bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto w-1/2 sm:w-1/4 py-2 px-4 rounded focus:shadow-outline"
+                            className="card bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto w-1/2 md:w-1/3 lg:w-1/4 py-2 px-4 rounded focus:shadow-outline"
                             onClick={() => {setShowFaces(true)}}
                         >
                             Show parents

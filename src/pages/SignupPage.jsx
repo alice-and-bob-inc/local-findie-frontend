@@ -34,7 +34,7 @@ function SignupPage() {
   return (
     <div className="pt-32">
       <NavBar/>
-      <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={signUpRequest}>
+      <form className="flex-col card box-border mx-auto w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12" onSubmit={signUpRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           Name
           <input
