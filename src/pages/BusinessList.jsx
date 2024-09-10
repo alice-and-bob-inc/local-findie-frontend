@@ -14,7 +14,6 @@ function BusinessList () {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ query, setQuery ] = useState("");
-    const [ imageSrc, setImageSrc ] = useState(null);
 
     let filteredBusinesses;
 
@@ -70,7 +69,7 @@ function BusinessList () {
             </div>
 
             <div className="pt-20 pb-16 mx-5">
-                <div className="grid grid-cols-4 gap-5 justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.map( (business) => {
                         
@@ -78,7 +77,7 @@ function BusinessList () {
                             <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5 text-lg font-semibold  text-gray-700">{business.name}</h3>
-                                    <img className="min-w-full min-h-48 max-h-48 object-fill rounded-md" src={getImg(business.category)} alt="business image" />
+                                    <img className="w-full min-h-48 max-h-48 object-fill rounded-md" src={getImg(business.category)} alt="business image" />
                                     <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
                                     <p className="my-3">{business.location}</p>
                                 </Link> 
