@@ -18,6 +18,7 @@ function BusinessDetails () {
     const [ error, setError ] = useState(null);
     const { businessId } = useParams();
     const { isLoggedIn } = useContext(AuthContext)
+    const [ imageSrc, setImageSrc ] = useState(null);
 
     const navigate = useNavigate();
     
@@ -25,6 +26,7 @@ function BusinessDetails () {
         businessService.getBusiness(businessId)
             .then((response) => {
                 setCurrentBusiness(response.data);
+                getImg(response.data.imageURL, response.data.category);
                 setLoading(false);
             })
             .catch((error) => {
@@ -71,22 +73,43 @@ function BusinessDetails () {
         });
     }
 
-    const getImg = (business) => {
-        if(business.imageURL) {
-            return business.imageURL;
-        } else  switch (business.category) {
-            case "restaurant":
-                return defaultImageRestaurant;
-            case "bookstore":
-                return defaultImageBookstore;
-            case "coffeeshop":
-                return defaultImageCoffeeshop;
-            case "arcade":
-                return defaultImageArcade;
-            case "fair":
-                return defaultImageFair; 
-        }
-    }
+    const isValidImageURL = (url, callback) => {
+        const img = new Image();
+        img.onload = () => callback(true);
+        img.onerror = () => callback(false);
+        img.src = url;
+    };
+
+    const getImg = (imageURL, category) => {
+        isValidImageURL(imageURL, (isValid) => {
+            if (isValid) {
+            setImageSrc(imageURL);
+            } else {
+            switch (category) {
+                case 'arcade':
+                setImageSrc(defaultImageArcade);
+                break;
+                case 'bookstore':
+                setImageSrc(defaultImageBookstore);
+                break;
+                case 'coffeeshop':
+                setImageSrc(defaultImageCoffeeshop);
+                break;
+                case 'fair':
+                setImageSrc(defaultImageFair);
+                break;
+                case 'restaurant':
+                setImageSrc(defaultImageRestaurant);
+                break;
+                default:
+                setImageSrc(defaultImageRestaurant);
+            }
+            }
+        });
+    };
+
+    if (error) return <div>Error: {error.message}</div>;
+    if (!currentBusiness) return <div>Loading...</div>;
 
     const displayRating = (rating) => {
         let stars = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
@@ -108,7 +131,7 @@ function BusinessDetails () {
 
                                 <div key={currentBusiness._id} className="w-full flex justify-around py-5">
                                     <div className="w-5/12">
-                                        <img src={getImg(currentBusiness)} alt="business image" className="rounded-lg border-2 border-green-700"/>
+                                        <img src={imageSrc} alt="business image" className="rounded-lg border-2 border-green-700"/>
                                     </div>
 
                                     <div className="px-5 w-4/12">
