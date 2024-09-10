@@ -106,7 +106,7 @@ function BusinessDetails () {
                     {currentBusiness
                         ? (
                             <div className="flex flex-col items-center">
-                                <h3 className="text-3xl  text-gray-700 font-semibold">{currentBusiness.name}</h3>
+                                <h3 className="text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
 
                                 <div key={currentBusiness._id} className="w-full flex justify-around py-5">
                                     <div className="w-5/12">
@@ -114,14 +114,20 @@ function BusinessDetails () {
                                     </div>
 
                                     <div className="px-5 w-4/12">
-                                        <h3 className="text-xl  text-gray-700 font-semibold mb-2">Details</h3>
+                                        <h3 className="text-xl text-gray-700 font-semibold mb-2">Details</h3>
                                         <h4>A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
-                                        <h4 className="text-xl  text-gray-700 font-semibold mb-2 mt-7">Description:</h4>
+                                        <h3 className="text-xl text-gray-700 font-semibold mb-2 mt-7">Description:</h3>
                                         <p>{currentBusiness.description}</p>
+                                        {currentBusiness.websiteURL	&& 
+                                            <>
+                                                <h3 className="text-xl text-gray-700 font-semibold mb-2 mt-7">Contact:</h3>
+                                                <a className="font-bold text-blue-600" target="_blank" href={currentBusiness.websiteURL}>{currentBusiness.websiteURL}</a>
+                                            </>
+                                        }
                                     </div>
 
                                     <div className="flex flex-col w-3/12">
-                                        <h3 className="text-xl  text-gray-700 font-semibold mb-2">Opening Hours</h3>
+                                        <h3 className="text-xl text-gray-700 font-semibold mb-2">Opening Hours</h3>
                                         {currentBusiness.openingHours && formatOpeningHours(currentBusiness.openingHours).map((hours, index) => (
                                             <p className="py-1" key={index}>{hours}</p>
                                         ))}
