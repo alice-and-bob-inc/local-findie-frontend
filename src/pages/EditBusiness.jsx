@@ -38,7 +38,7 @@ function EditBusiness () {
 
         if (currentBusiness) {
           currentBusiness.name && setName(currentBusiness.name);
-          currentBusiness.imageURL && setImageURL(currentBusiness.image);
+          currentBusiness.imageURL && setImageURL(currentBusiness.imageURL);
           currentBusiness.description && setDescription(currentBusiness.description);
           currentBusiness.location && setLocation(currentBusiness.location);
           currentBusiness.category && setCategory(currentBusiness.category);
