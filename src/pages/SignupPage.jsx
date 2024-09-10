@@ -59,8 +59,8 @@ function SignupPage() {
           Password
           <input
             className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
-            type="text"
-            name="pasword"
+            type="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
