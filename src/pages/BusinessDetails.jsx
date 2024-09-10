@@ -89,10 +89,8 @@ function BusinessDetails () {
     }
 
     const displayRating = (rating) => {
-        let stars = "";
-        for(let i=0; i<rating; i++){
-            stars+= "⭐";
-        }
+        let stars = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
+
         return stars;
     }
 
@@ -121,7 +119,7 @@ function BusinessDetails () {
                                         {currentBusiness.websiteURL	&& 
                                             <>
                                                 <h3 className="text-xl text-gray-700 font-semibold mb-2 mt-7">Contact:</h3>
-                                                <a className="font-bold text-blue-600" target="_blank" href={currentBusiness.websiteURL}>{currentBusiness.websiteURL}</a>
+                                                <a className="font-bold text-blue-600" target="_blank" href={currentBusiness.websiteURL}>Website link</a>
                                             </>
                                         }
                                     </div>
@@ -171,7 +169,7 @@ function BusinessDetails () {
                                     <hr className="my-2"/>
                                     <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
                                     <p className="mt-2">{review.text}</p>
-                                    <p className="mt-2 [text-shadow:_0_3px_3px_rgb(0_0_0_/_0.8),_3px_0_3px_rgb(0_0_0_/_0.8)]">{displayRating(review.rating)}</p>
+                                    <p className="mt-2">{displayRating(review.rating)}</p>
                                 </div>
                             )
                         }))
