@@ -7,6 +7,7 @@ import defaultImageBookstore from "/defaultImageBookstore.webp";
 import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
 import defaultImageFair from "/defaultImageFair.jpeg";
 import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+import NavBar from "../components/NavBar";
 
 function BusinessList () {
 
@@ -63,13 +64,15 @@ function BusinessList () {
 
     return (
         <div className="min-w-full">
-            <div className="fixed top-0 left-7 max-w-md my-4 z-20">
-                <span>Search</span>
-                <input className="mx-5 min-w-80 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
-            </div>
+            <NavBar>
+                <div className="max-w-md mx-10 my-4 z-20">
+                    <span>Search</span>
+                    <input className="mx-5 min-w-80 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
+                </div>
+            </NavBar>
 
-            <div className="pt-20 pb-16 mx-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
+            <div className="pt-24 pb-16 mx-5">
+                <div className="grid grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.map( (business) => {
                         
@@ -77,13 +80,13 @@ function BusinessList () {
                             <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5 text-lg font-semibold  text-gray-700">{business.name}</h3>
-                                    <img className="w-full min-h-48 max-h-48 object-fill rounded-md" src={getImg(business.category)} alt="business image" />
+                                    <img className="mx-auto h-48 object-fill rounded-md" src={getImg(business.category)} alt="business image" />
                                     <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
                                     <p className="my-3">{business.location}</p>
                                 </Link> 
                             </div>) 
                         }) 
-                    : <p>No businesses found.</p>}
+                    : <p className="card box-border mx-auto max-h-96 justify-center">No businesses found.</p>}
                 </div>
             </div>
         </div>

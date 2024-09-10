@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 function NotFoundPage () {
     return (
-        <div className="pt-16 flex flex-col items-center container mx-auto p-4">
+        <div className="pt-20 flex flex-col items-center container mx-auto p-4">
+            <NavBar/>
             <div className="card box-border w-10/12 min-h-96 m-3 p-12 flex flex-col">
                 <h2  className="text-xl mb-3 font-semibold leading-loose">Oops! Page Not Found</h2>
 
