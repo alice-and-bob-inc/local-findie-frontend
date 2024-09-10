@@ -63,9 +63,8 @@ function LoginPage() {
         </label>
         
         <button type="submit" className="card block bg-blue-500 hover:bg-blue-700 text-white font-bold m-auto py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Login</button>
+        {errorMessage && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{errorMessage}</p>}
       </form>
-
-      {errorMessage && <p>{errorMessage}</p>}
 
       <div className="flex-col card box-border mx-auto max-w-sm mt-20">
 
