@@ -37,6 +37,10 @@ class BusinessService {
     deleteBusiness = (id) => {
         return this.api.delete(`/api/businesses/${id}`);
     };
+
+    uploadImage = (file) => {
+        return this.api.post("/api/upload", file)
+    }
 }
 
 const businessService = new BusinessService;

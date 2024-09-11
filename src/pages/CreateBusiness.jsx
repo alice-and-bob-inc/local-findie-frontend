@@ -92,6 +92,19 @@ function CreateBusiness() {
     ));
   };
 
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+
+    uploadData.append("imageURL", e.target.files[0]);
+
+    businessService.uploadImage(uploadData)
+      .then((response) => {
+        console.log(response.data.fileURL);
+        setImageURL(`${response.data.fileURL}`);
+      })
+      .catch((error) => {console.log("Error while uploading image: ", error)})
+  };
+
   return (
     <div className="pt-24 pb-16">
       <NavBar/>
@@ -121,6 +134,16 @@ function CreateBusiness() {
               placeholder="https://example.com/path/to/image.jpg"
               value={imageURL}
               onChange={(e) => setImageURL(e.target.value)}
+            />
+          </label>
+
+          <label className="block text-gray-700 text-sm font-bold mb-4">
+            Image Upload
+            <input
+              className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
+              type="file"
+              name="image"
+              onChange={(e) => handleFileUpload(e)}
             />
           </label>
 
