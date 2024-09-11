@@ -143,7 +143,7 @@ function BusinessDetails () {
                                         <p className="md:mx-4 text-sm md:text-md mt-2">{currentBusiness.description}</p>
                                         {currentBusiness.websiteURL	&& 
                                             <>
-                                                <h3 className="text-md md:text-lg font-semibold mt-4">Contact:</h3>
+                                                <h3 className="md:mx-4 text-md md:text-lg text-gray-700 font-semibold mb-2 mt-4">Contact:</h3>
                                                 <a className="font-bold text-blue-600" target="_blank" href={currentBusiness.websiteURL}>Website link</a>
                                             </>
                                         }
