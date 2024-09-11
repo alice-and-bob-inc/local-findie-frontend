@@ -53,6 +53,7 @@ function SignupPage() {
             className="mt-1 block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline"
             name="email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
@@ -64,14 +65,15 @@ function SignupPage() {
             type="password"
             name="password"
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
         <button type="submit" className="card block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Sign Up</button>
+        {errorMessage && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{errorMessage}</p>}
       </form>
 
-      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 }

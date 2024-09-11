@@ -50,6 +50,7 @@ function LoginPage() {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </label>
 
@@ -61,6 +62,7 @@ function LoginPage() {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </label>
         

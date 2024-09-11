@@ -86,7 +86,10 @@ function BusinessList () {
                                 </Link> 
                             </div>) 
                         }) 
-                    : <p className="card box-border mx-auto max-h-96 justify-center">No businesses found.</p>}
+                    : (loading 
+                        ? <p className="card box-border mx-auto max-h-96 justify-center">Loading...</p> 
+                        : <p className="card box-border mx-auto max-h-96 justify-center">{error}</p>)
+                    }
                 </div>
             </div>
         </div>

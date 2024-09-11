@@ -109,8 +109,6 @@ function BusinessDetails () {
         });
     };
 
-    if (error) return <div>Error: {error.message}</div>;
-    if (!currentBusiness) return <div>Loading...</div>;
 
     const displayRating = (rating) => {
         let stars = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
@@ -123,8 +121,9 @@ function BusinessDetails () {
             <NavBar/>
             <div className="pt-20 flex flex-col items-center container mx-auto p-4">
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 flex">
-                    {loading && <p>Loading...</p>}
-                    {error && <p>Error fetching business from database...</p>}
+                    {loading && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Loading...</p>}
+                    {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Error fetching businesses from database</p>}
+
 
                     {currentBusiness
                         ? (

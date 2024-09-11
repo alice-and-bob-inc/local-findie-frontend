@@ -4,6 +4,7 @@ import businessService from "../services/business.services";
 import NavBar from "../components/NavBar";
 
 function CreateBusiness() {
+  const [ error, setError ] = useState(null);
   const [ name, setName ] = useState("");
   const [ imageURL, setImageURL ] = useState("");
   const [ description, setDescription ] = useState("");
@@ -48,7 +49,7 @@ function CreateBusiness() {
       .then((response) => {
         navigate("/businesses");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(error));
   };
 
   const handleOpeningHoursChange = (day, type, value) => {
@@ -102,7 +103,7 @@ function CreateBusiness() {
         console.log(response.data.fileURL);
         setImageURL(`${response.data.fileURL}`);
       })
-      .catch((error) => {console.log("Error while uploading image: ", error)})
+      .catch((error) => {setError(error)})
   };
 
   return (
@@ -223,6 +224,7 @@ function CreateBusiness() {
             Add
           </button>
         </form>
+        {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{error}</p>}
       </div>
     </div>
   );
