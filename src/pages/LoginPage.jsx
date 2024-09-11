@@ -42,7 +42,7 @@ function LoginPage() {
   return (
     <div className="pt-32">
       <NavBar/>
-      <form className="flex-col card box-border mx-auto max-w-sm" onSubmit={loginRequest}>
+      <form className="flex-col card box-border mx-auto max-w-sm w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12" onSubmit={loginRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           E-mail
           <textarea
@@ -68,9 +68,9 @@ function LoginPage() {
         {errorMessage && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{errorMessage}</p>}
       </form>
 
-      <div className="flex-col card box-border mx-auto max-w-sm mt-20">
+      <div className="flex-col card box-border mx-auto max-w-sm mt-20 w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12">
 
-        <p className="block text-gray-700 text-lg font-semibold mb-4">Don't have an account yet?</p>
+        <p className="block text-gray-700 text-sm sm:text-md text-center font-semibold mb-4">Don't have an account yet?</p>
         <Link className="card block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold mx-auto py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline max-w-40" to="/signup">Sign Up</Link>
       
       </div>

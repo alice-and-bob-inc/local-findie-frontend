@@ -90,11 +90,11 @@ function EditBusiness () {
     return days.map((day) => (
 
       <div key={day} className="flex-col">
-        <label className=" text-gray-700 text-sm font-bold mb-4">
+        <label className=" text-gray-700 text-xs sm:text-sm font-bold mb-4">
           {day.charAt(0).toUpperCase() + day.slice(1)}:
         </label>
 
-        <label className=" text-gray-700 text-sm font-bold mb-4 px-8">
+        <label className=" text-gray-700 text-xs sm:text-sm font-bold mb-4 px-8">
           From:
           <input
             type="time"
@@ -105,7 +105,7 @@ function EditBusiness () {
           />
         </label>
 
-        <label className=" text-gray-700 text-sm font-bold mb-4">
+        <label className=" text-gray-700 text-xs sm:text-sm font-bold mb-4">
           Till:
           <input
             type="time"
@@ -137,7 +137,7 @@ function EditBusiness () {
   return (
     <div className="pt-24 pb-16">
       <NavBar/>
-      <div className="card box-border mx-auto max-w-xl">
+      <div className="card box-border mx-auto w-11/12 sm:w-9/12 md:w-8/12 lg:w-6/12">
         <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 
         <form className="flex-col" onSubmit={handleSubmit}>

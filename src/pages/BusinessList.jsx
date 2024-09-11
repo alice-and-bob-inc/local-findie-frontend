@@ -15,7 +15,6 @@ function BusinessList () {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ query, setQuery ] = useState("");
-    const [ imageSrc, setImageSrc ] = useState(null);
 
     let filteredBusinesses;
 
@@ -73,7 +72,7 @@ function BusinessList () {
             </NavBar>
 
             <div className="pt-24 pb-16 mx-5">
-                <div className="grid grid-cols-4 gap-5 justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.map( (business) => {
                         
