@@ -15,6 +15,7 @@ function BusinessList () {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ query, setQuery ] = useState("");
+    
 
     let filteredBusinesses;
 
@@ -45,22 +46,26 @@ function BusinessList () {
             if(business.description && business.description.toLowerCase().includes(query.toLowerCase())){return true}
         });
     }
-    
-    
-    const getImg = (category) => {
-        switch (category) {
-            case "restaurant":
-                return defaultImageRestaurant;
-            case "bookstore":
-                return defaultImageBookstore;
-            case "coffeeshop":
-                return defaultImageCoffeeshop;
-            case "arcade":
-                return defaultImageArcade;
-            case "fair":
-                return defaultImageFair; 
+
+    const getImg = (imageURL, category) => {
+        if(imageURL){
+            return imageURL
+        } else {
+            switch (category) {
+                case "restaurant":
+                    return defaultImageRestaurant;
+                case "bookstore":
+                    return defaultImageBookstore;
+                case "coffeeshop":
+                    return defaultImageCoffeeshop;
+                case "arcade":
+                    return defaultImageArcade;
+                case "fair":
+                    return defaultImageFair; 
+            }
         }
     }
+    
 
     return (
         <div className="min-w-full">
@@ -80,7 +85,7 @@ function BusinessList () {
                             <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5 text-lg font-semibold  text-gray-700">{business.name}</h3>
-                                    <img className="mx-auto h-48 object-fill rounded-md" src={getImg(business.category)} alt="business image" />
+                                    <img className="mx-auto h-48 object-fill rounded-md" src={getImg(business.imageURL, business.category)} alt="business image" />
                                     <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
                                     <p className="my-3">{business.location}</p>
                                 </Link> 
