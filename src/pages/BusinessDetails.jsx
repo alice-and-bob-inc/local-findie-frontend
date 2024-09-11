@@ -129,18 +129,18 @@ function BusinessDetails () {
                     {currentBusiness
                         ? (
                             <div className="flex flex-col items-center">
-                                <h3 className="text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
+                                <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
 
-                                <div key={currentBusiness._id} className="w-full flex justify-around py-5">
-                                    <div className="w-full md:w-5/12">
+                                <div key={currentBusiness._id} className="w-full flex flex-col md:flex-row justify-around py-5">
+                                    <div className="w-full sm:w-4/5 sm:mx-auto md:w-5/12">
                                         <img src={imageSrc} alt="business image" className="rounded-lg border-2 border-green-700"/>
                                     </div>
 
-                                    <div className="px-4 md:px-8 w-full md:w-4/12">
-                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2">Details</h3>
-                                        <h4 className="text-md md:text-lg mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
-                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2 mt-7">Description:</h3>
-                                        <p className="text-md md:text-lg mt-2">{currentBusiness.description}</p>
+                                    <div className="w-full md:w-4/12">
+                                        <h3 className="mt-4 sm:mt-0 md:mx-4 text-md md:text-lg text-gray-700 font-semibold mb-2">Details</h3>
+                                        <h4 className="md:mx-4 text-sm sm:text-md mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
+                                        <h3 className="md:mx-4 text-md md:text-lg text-gray-700 font-semibold mb-2 mt-4">Description:</h3>
+                                        <p className="md:mx-4 text-sm md:text-md mt-2">{currentBusiness.description}</p>
                                         {currentBusiness.websiteURL	&& 
                                             <>
                                                 <h3 className="text-md md:text-lg font-semibold mt-4">Contact:</h3>
@@ -150,9 +150,9 @@ function BusinessDetails () {
                                     </div>
 
                                     <div className="flex flex-col md:w-3/12">
-                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mb-2">Opening Hours</h3>
+                                        <h3 className="text-md md:text-lg text-gray-700 font-semibold mt-4 sm:mt-0 mb-2">Opening Hours</h3>
                                         {currentBusiness.openingHours && formatOpeningHours(currentBusiness.openingHours).map((hours, index) => (
-                                            <p className="text-xs sm:text-sm md:text-base py-1" key={index}>{hours}</p>
+                                            <p className="text-xs sm:text-sm md:text-md py-1" key={index}>{hours}</p>
                                         ))}
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@ function BusinessDetails () {
                                 </div>
                             )
                         }))
-                        : (<p className="text-gray-500">No reviews found for this business, leave a review above!</p>)
+                        : (<p className="text-gray-500">No reviews found for this business, leave a review below!</p>)
                     }
 
                     {isLoggedIn && <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>}
