@@ -47,25 +47,27 @@ function BusinessList () {
         });
     }
 
-    const getImg = (imageURL, category) => {
-        if(imageURL){
-            return imageURL
-        } else {
-            switch (category) {
-                case "restaurant":
-                    return defaultImageRestaurant;
-                case "bookstore":
-                    return defaultImageBookstore;
-                case "coffeeshop":
-                    return defaultImageCoffeeshop;
-                case "arcade":
-                    return defaultImageArcade;
-                case "fair":
-                    return defaultImageFair; 
-            }
+    const handleImageError = (e, category) => {
+        switch (category) {
+            case "restaurant":
+                e.target.src = defaultImageRestaurant;
+                break;
+            case "bookstore":
+                e.target.src = defaultImageBookstore;
+                break;
+            case "coffeeshop":
+                e.target.src = defaultImageCoffeeshop;
+                break;
+            case "arcade":
+                e.target.src = defaultImageArcade;
+                break;
+            case "fair":
+                e.target.src = defaultImageFair; 
+                break;
         }
-    }
     
+    };
+
 
     return (
         <div className="min-w-full">
@@ -80,17 +82,37 @@ function BusinessList () {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.map( (business) => {
-                        
+
+                        const imageURL = business.imageURL 
+                            ? business.imageURL 
+                            : (() => {
+                                switch (business.category) {
+                                    case "restaurant":    
+                                        return defaultImageRestaurant;
+                                    case "bookstore":
+                                        return defaultImageBookstore;
+                                    case "coffeeshop":
+                                        return defaultImageCoffeeshop;
+                                    case "arcade":
+                                        return defaultImageArcade;
+                                    case "fair":
+                                        return defaultImageFair;
+                                    default:
+                                        return defaultImageRestaurant; 
+                                }
+                            })();
+        
                         return (
                             <div className="card box-border hover:bg-green-200 min-h-96 max-h-96 justify-center hover:scale-105" key={business._id}>
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5 text-lg font-semibold  text-gray-700">{business.name}</h3>
-                                    <img className="mx-auto h-48 object-fill rounded-md" src={getImg(business.imageURL, business.category)} alt="business image" />
+                                    <img className="mx-auto h-48 object-fill rounded-md" src={imageURL} alt="business image" onError={(e) => handleImageError(e, business.category)}/>
                                     <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
                                     <p className="my-3">{business.location}</p>
                                 </Link> 
-                            </div>) 
-                        }) 
+                            </div>
+                        );
+                    }) 
                     : (loading 
                         ? <p className="card box-border mx-auto max-h-96 justify-center">Loading...</p> 
                         : <p className="card box-border mx-auto max-h-96 justify-center">{error}</p>)
