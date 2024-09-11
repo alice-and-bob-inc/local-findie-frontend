@@ -122,11 +122,11 @@ function BusinessDetails () {
             <div className="pt-20 flex flex-col items-center container mx-auto p-4">
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 flex">
                     {loading && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Loading...</p>}
-                    {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Error fetching businesses from database</p>}
+                    {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6 mx-auto">Error fetching business from database</p>}
 
 
                     {currentBusiness
-                        ? (
+                        && (
                             <div className="flex flex-col items-center">
                                 <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
 
@@ -158,12 +158,12 @@ function BusinessDetails () {
                             </div>
                         )
                         
-                        : (navigate("/notfoundpage"))  
                     }
                 </div>
 
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 max-h-96 flex flex-col md:flex-row items-center justify-center m-3">
-                    {isLoggedIn &&
+                    {isLoggedIn && !error  &&
+                    
                         <>
                             <Link to={`/businesses/edit/${businessId}`}>
                                 <button className="card bg-green-500 hover:bg-green-700 text-white font-bold py-2 my-1 px-4 mx-1 rounded focus:shadow-outline">
@@ -175,6 +175,7 @@ function BusinessDetails () {
                                 Delete Business
                             </button>
                         </>
+                    
                     }
 
                     <Link to={"/businesses"}>
@@ -182,26 +183,29 @@ function BusinessDetails () {
                     </Link>
                 </div>
 
-                <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 flex flex-col items-center m-3 mb-16">
-                    <h3 className="text-xl md:text-2xl text-gray-700 font-semibold mb-4">Reviews</h3>
-                    {currentReviews && currentReviews.length > 0 
-                        ? (currentReviews.map((review) => {
-                            return(
-                                
-                                <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-4 w-full">
-                                    <p className="text-lg font-semibold">{review.title}</p>
-                                    <hr className="my-2"/>
-                                    <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
-                                    <p className="mt-2 text-sm md:text-base">{review.text}</p>
-                                    <p className="mt-2 text-sm md:text-base">{displayRating(review.rating)}</p>
-                                </div>
-                            )
-                        }))
-                        : (<p className="text-gray-500">No reviews found for this business, leave a review below!</p>)
-                    }
 
-                    {isLoggedIn && <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>}
-                </div>
+                {!error &&
+                    <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 flex flex-col items-center m-3 mb-16">
+                        <h3 className="text-xl md:text-2xl text-gray-700 font-semibold mb-4">Reviews</h3>
+                        {currentReviews && currentReviews.length > 0 
+                            ? (currentReviews.map((review) => {
+                                return(
+                                    
+                                    <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-4 w-full">
+                                        <p className="text-lg font-semibold">{review.title}</p>
+                                        <hr className="my-2"/>
+                                        <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
+                                        <p className="mt-2 text-sm md:text-base">{review.text}</p>
+                                        <p className="mt-2 text-sm md:text-base">{displayRating(review.rating)}</p>
+                                    </div>
+                                )
+                            }))
+                            : (<p className="text-gray-500">No reviews found for this business, {isLoggedIn ? "leave a review below!" : "log in and leave a review!"}</p>)
+                        }
+
+                        {isLoggedIn && <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>}
+                    </div>
+                }
 
         
             </div>

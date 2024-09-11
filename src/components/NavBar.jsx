@@ -10,7 +10,7 @@ function NavBar ({ children }) {
             <nav className="bg-green-300 flex flex-col sm:flex-row items-center justify-between fixed top-0 w-full z-10 border border-b-green-400">
                 <div className="hidden md:block">
                     <NavLink to="/">
-                        <img className="md:ml-2 md:h-10 z-22 w-0 h-0 md:w-auto" src="../../local-findie-logoreal.gif" alt="" />
+                        <img className="md:ml-2 md:h-10 z-22 w-0 h-0 md:w-auto" src="../../local-findie-logo.gif" alt="" />
                     </NavLink>
                 </div>   
 
