@@ -14,9 +14,9 @@ function NavBar ({ children }) {
                     </NavLink>
                 </div>   
 
-                <div className="flex flex-col items-center w-full sm:w-auto sm:flex-row sm:flex-grow md:justify-end md:gap-5 justify-between mx-5">
+                <div className="flex flex-col items-center w-full sm:w-auto sm:flex-row sm:flex-grow md:justify-end md:gap-3 justify-between mx-2">
 
-                    <div className="w-full sm:w-auto flex justify-start sm:mb-3">{children}</div>
+                    <div className="w-full md:ml-3 sm:w-auto flex justify-start sm:mb-3">{children}</div>
 
                     <div className="flex justify-end">
                         <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/">Home</NavLink>
