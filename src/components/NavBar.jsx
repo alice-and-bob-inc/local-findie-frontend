@@ -7,32 +7,39 @@ function NavBar ({ children }) {
 
     return (
         <>
-            <nav className="bg-green-300 px-5 flex items-center justify-end fixed top-0 min-w-full z-10 border border-green-400">
-                <div className="flex items-center mr-auto">
+            <nav className="bg-green-300 flex flex-col sm:flex-row items-center justify-between fixed top-0 w-full z-10 border border-b-green-400">
+                <div className="hidden md:block">
                     <NavLink to="/">
-                        <img className="ml-2 h-12 z-22" src="../../local-findie-logoreal.gif" alt="" />
+                        <img className="md:ml-2 md:h-10 z-22 w-0 h-0 md:w-auto" src="../../local-findie-logoreal.gif" alt="" />
                     </NavLink>
-                    {children}
-                </div>
-                <NavLink className="px-4 py-4 hover:text-white" to="/">Home</NavLink>
-                <NavLink className="px-4 py-4 hover:text-white" to="/businesses">Businesses</NavLink>
-                
-                {isLoggedIn && (
-                    <NavLink className="px-4 py-4 hover:text-white" to="/businesses/create">Add Business</NavLink>
-                )}
-                
-                <NavLink className="px-4 py-4 hover:text-white" to="/about">About</NavLink>
-                
-                {!isLoggedIn && (
-                    <>
-                        <NavLink className="px-4 py-4 hover:text-white" to="/signup">SignUp</NavLink>
-                        <NavLink className="px-4 py-4 hover:text-white" to="/login">Login</NavLink>
-                    </>
-                )}
+                </div>   
 
-                {isLoggedIn && (
-                    <button className="px-4 py-4 hover:text-white" onClick={logOutUser}>Log out</button>
-                )}
+                <div className="flex flex-col items-center w-full sm:w-auto sm:flex-row sm:flex-grow md:justify-end md:gap-5 justify-between mx-5">
+
+                    <div className="w-full sm:w-auto flex justify-start sm:mb-3">{children}</div>
+
+                    <div className="flex justify-end">
+                        <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/">Home</NavLink>
+                        <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/businesses">Businesses</NavLink>
+                        
+                        {isLoggedIn && (
+                            <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/businesses/create">Add Business</NavLink>
+                        )}
+                        
+                        <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/about">About</NavLink>
+                        
+                        {!isLoggedIn && (
+                            <>
+                                <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/signup">SignUp</NavLink>
+                                <NavLink className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" to="/login">Login</NavLink>
+                            </>
+                        )}
+
+                        {isLoggedIn && (
+                            <button className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" onClick={logOutUser}>Log out</button>
+                        )}
+                    </div>
+                </div>
             </nav>
         </>
     )
