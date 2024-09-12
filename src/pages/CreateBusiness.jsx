@@ -194,11 +194,20 @@ function CreateBusiness() {
               <option value="" disabled>
                 Select a category
               </option>
-              <option value="restaurant">Restaurant</option>
+              <option value="arcade">Arcade</option>
+              <option value="bakery">Bakery</option>
               <option value="bookstore">Bookstore</option>
               <option value="coffeeshop">Coffee Shop</option>
-              <option value="arcade">Arcade</option>
               <option value="fair">Fair</option>
+              <option value="fitness center">Fitness center</option>
+              <option value="garden center">Garden center</option>
+              <option value="hotel">Hotel</option>
+              <option value="movie theater">Movie theater</option>
+              <option value="nightclub">Nightclub</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="retail store">Retail store</option>
+              <option value="supermarket">Supermarket</option>
+              <option value="wellness center">Wellness center</option>
             </select>
           </label>
 
