@@ -66,6 +66,19 @@ function BusinessDetails () {
         }
     }
 
+    const deleteReview = (reviewId, authorId) => {
+        if(authorId === user._id){
+            reviewService.deleteReview(businessId, reviewId)
+                .then((response) => {
+                    getSpecificBusinessReviews();
+                    navigate(`/businesses/${businessId}`)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+    }
+
     const formatOpeningHours = (openingHours) => {
         const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         return days.map(day => {
@@ -198,9 +211,17 @@ function BusinessDetails () {
                                     <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-4 w-full">
                                         <p className="text-lg font-semibold">{review.title}</p>
                                         <hr className="my-2"/>
-                                        <p className="text-sm text-gray-600">Written by: {review.author.name}</p>
+                                        <p className="text-sm text-gray-600">Written by {user._id === review.author._id ? "you" : review.author.name}</p>
                                         <p className="mt-2 text-sm md:text-base">{review.text}</p>
                                         <p className="mt-2 text-sm md:text-base">{displayRating(review.rating)}</p>
+                                        {user._id === review.author._id &&
+                                            <button 
+                                                onClick={() => {deleteReview(review._id, review.author._id)}}
+                                                className="card bg-red-500 hover:bg-red-700 text-white font-bold text-sm py-2 my-1 px-4 mx-1 rounded focus:shadow-outline"
+                                            >
+                                                Delete
+                                            </button>
+                                        }
                                     </div>
                                 )
                             }))
