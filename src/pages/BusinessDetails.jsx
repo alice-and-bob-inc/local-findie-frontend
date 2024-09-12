@@ -200,7 +200,7 @@ function BusinessDetails () {
                                     </div>
                                 )
                             }))
-                            : (<p className="text-gray-500">No reviews found for this business, {isLoggedIn ? "leave a review below!" : "log in and leave a review!"}</p>)
+                            : (<p className="text-gray-500">No reviews found for this business, {isLoggedIn ? "leave a review below!" : <><Link className="text-gray-900 font-extrabold hover:text-gray-500" to={"/login"}>log in</Link> and leave a review!</>}</p>)
                         }
 
                         {isLoggedIn && <ReviewForm getSpecificBusinessReviews={getSpecificBusinessReviews}/>}
