@@ -161,7 +161,6 @@ function BusinessDetails () {
         });
     };
 
-
     const displayRating = (rating) => {
         let stars = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
 
@@ -189,7 +188,7 @@ function BusinessDetails () {
 
                                     <div className="w-full md:w-4/12">
                                         <h3 className="mt-4 sm:mt-0 md:mx-4 text-md md:text-lg text-gray-700 font-semibold mb-2">Details</h3>
-                                        <h4 className="md:mx-4 text-sm sm:text-md mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} that's been around since {currentBusiness.foundedYear}</h4>
+                                        <h4 className="md:mx-4 text-sm sm:text-md mt-2">A{currentBusiness.category.match('^[aieouAIEOU].*') && "n"} {currentBusiness.category} in {currentBusiness.location} {currentBusiness.foundedYear && `that's been around since ${currentBusiness.foundedYear}`}</h4>
                                         <h3 className="md:mx-4 text-md md:text-lg text-gray-700 font-semibold mb-2 mt-4">Description:</h3>
                                         <p className="md:mx-4 text-sm md:text-md mt-2">{currentBusiness.description}</p>
                                         {currentBusiness.websiteURL	&& 
