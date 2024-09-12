@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import businessService from "../services/business.services";
 import NavBar from "../components/NavBar";
+import { AuthContext } from "../context/auth.context";
 
 function EditBusiness () {
   const [ error, setError ] = useState(null);
@@ -29,6 +30,7 @@ function EditBusiness () {
     sunTill: "",
   });
 
+  const { user } = useContext(AuthContext);
   const { businessId } = useParams();
   const navigate = useNavigate();
 
@@ -37,7 +39,10 @@ function EditBusiness () {
       .getBusiness(businessId)
       .then((response) => {
         const currentBusiness = response.data;
+        // Redirect user to businessDetail page if user is not the creator of currentBusiness
+        if(currentBusiness.user !== user._id){navigate(`/businesses/${currentBusiness._id}`)}
 
+        // Prefill the values that are currently stored in the database, in the form
         if (currentBusiness) {
           currentBusiness.name && setName(currentBusiness.name);
           currentBusiness.imageURL && setImageURL(currentBusiness.imageURL);
@@ -68,7 +73,9 @@ function EditBusiness () {
       foundedYear,
       websiteURL,
       openingHours,
+      user
     };
+    console.log("editbusiness: ", requestBody)
 
     businessService
       .updateBusiness(businessId, requestBody)

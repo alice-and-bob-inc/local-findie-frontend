@@ -36,7 +36,7 @@ function NavBar ({ children }) {
                         )}
 
                         {isLoggedIn && (
-                            <button className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" onClick={logOutUser}>Log out</button>
+                            <button className="px-2 py-2 text-xs md:text-sm lg:text-base hover:text-white" onClick={logOutUser}>Log out: {user.name}</button>
                         )}
                     </div>
                 </div>
