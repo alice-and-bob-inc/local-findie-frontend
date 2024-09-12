@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import businessService from "../services/business.services";
 
 import defaultImageArcade from "/defaultImageArcade.jpg";
+import defaultImageBakery from "/defaultImageBakery.jpg";
 import defaultImageBookstore from "/defaultImageBookstore.webp";
 import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
 import defaultImageFair from "/defaultImageFair.jpeg";
+import defaultImageFitnessCenter from "/defaultImageFitnessCenter.jpg";
+import defaultImageGardenCenter from "/defaultImageGardenCenter.jpg";
+import defaultImageHotel from "/defaultImageHotel.jpg";
+import defaultImageMovieTheater from "/defaultImageMovieTheater.jpg";
+import defaultImageNightclub from "/defaultImageNightclub.jpg";
 import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+import defaultImageRetailStore from "/defaultImageRetailStore.jpg";
+import defaultImageSupermarket from "/defaultImageSupermarket.jpg";
+import defaultImageWellnessCenter from "/defaultImageWellnessCenter.jpg";
 import NavBar from "../components/NavBar";
 
 function BusinessList () {
@@ -49,8 +58,11 @@ function BusinessList () {
 
     const handleImageError = (e, category) => {
         switch (category) {
-            case "restaurant":
-                e.target.src = defaultImageRestaurant;
+            case "arcade":
+                e.target.src = defaultImageArcade;
+                break;
+            case "bakery":
+                e.target.src = defaultImageBakery;
                 break;
             case "bookstore":
                 e.target.src = defaultImageBookstore;
@@ -58,11 +70,35 @@ function BusinessList () {
             case "coffeeshop":
                 e.target.src = defaultImageCoffeeshop;
                 break;
-            case "arcade":
-                e.target.src = defaultImageArcade;
-                break;
             case "fair":
                 e.target.src = defaultImageFair; 
+                break;
+            case "fitness center":
+                e.target.src = defaultImageFitnessCenter; 
+                break;
+            case "garden center":
+                e.target.src = defaultImageGardenCenter; 
+                break;
+            case "hotel":
+                e.target.src = defaultImageHotel; 
+                break;
+            case "movie theater":
+                e.target.src = defaultImageMovieTheater; 
+                break;
+            case "nightclub":
+                e.target.src = defaultImageNightclub; 
+                break;
+            case "restaurant":
+                e.target.src = defaultImageRestaurant;
+                break;
+            case "retail store":
+                e.target.src = defaultImageRetailStore;
+                break;
+            case "supermarket":
+                e.target.src = defaultImageSupermarket;
+                break;
+            case "wellness center":
+                e.target.src = defaultImageWellnessCenter;
                 break;
         }
     
@@ -87,16 +123,34 @@ function BusinessList () {
                             ? business.imageURL 
                             : (() => {
                                 switch (business.category) {
-                                    case "restaurant":    
-                                        return defaultImageRestaurant;
+                                    case "arcade":
+                                        return defaultImageArcade;
+                                    case "bakery":
+                                        return defaultImageBakery;
                                     case "bookstore":
                                         return defaultImageBookstore;
                                     case "coffeeshop":
                                         return defaultImageCoffeeshop;
-                                    case "arcade":
-                                        return defaultImageArcade;
                                     case "fair":
-                                        return defaultImageFair;
+                                        return defaultImageFair; 
+                                    case "fitness center":
+                                        return defaultImageFitnessCenter; 
+                                    case "garden center":
+                                        return defaultImageGardenCenter; 
+                                    case "hotel":
+                                        return defaultImageHotel; 
+                                    case "movie theater":
+                                        return defaultImageMovieTheater; 
+                                    case "nightclub":
+                                        return defaultImageNightclub; 
+                                    case "restaurant":
+                                        return defaultImageRestaurant;
+                                    case "retail store":
+                                        return defaultImageRetailStore;
+                                    case "supermarket":
+                                        return defaultImageSupermarket;
+                                    case "wellness center":
+                                        return defaultImageWellnessCenter;
                                     default:
                                         return defaultImageRestaurant; 
                                 }

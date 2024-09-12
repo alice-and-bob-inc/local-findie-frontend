@@ -6,10 +6,19 @@ import reviewService from "../services/review.service";
 import { AuthContext } from "../context/auth.context";
 
 import defaultImageArcade from "/defaultImageArcade.jpg";
+import defaultImageBakery from "/defaultImageBakery.jpg";
 import defaultImageBookstore from "/defaultImageBookstore.webp";
 import defaultImageCoffeeshop from "/defaultImageCoffeeshop.png";
 import defaultImageFair from "/defaultImageFair.jpeg";
+import defaultImageFitnessCenter from "/defaultImageFitnessCenter.jpg";
+import defaultImageGardenCenter from "/defaultImageGardenCenter.jpg";
+import defaultImageHotel from "/defaultImageHotel.jpg";
+import defaultImageMovieTheater from "/defaultImageMovieTheater.jpg";
+import defaultImageNightclub from "/defaultImageNightclub.jpg";
 import defaultImageRestaurant from "/defaultImageRestaurant.jpg";
+import defaultImageRetailStore from "/defaultImageRetailStore.jpg";
+import defaultImageSupermarket from "/defaultImageSupermarket.jpg";
+import defaultImageWellnessCenter from "/defaultImageWellnessCenter.jpg";
 import NavBar from "../components/NavBar";
 
 function BusinessDetails () {
@@ -100,28 +109,55 @@ function BusinessDetails () {
     const getImg = (imageURL, category) => {
         isValidImageURL(imageURL, (isValid) => {
             if (isValid) {
-            setImageSrc(imageURL);
+                setImageSrc(imageURL);
             } else {
-            switch (category) {
-                case 'arcade':
-                setImageSrc(defaultImageArcade);
-                break;
-                case 'bookstore':
-                setImageSrc(defaultImageBookstore);
-                break;
-                case 'coffeeshop':
-                setImageSrc(defaultImageCoffeeshop);
-                break;
-                case 'fair':
-                setImageSrc(defaultImageFair);
-                break;
-                case 'restaurant':
-                setImageSrc(defaultImageRestaurant);
-                break;
-                default:
-                setImageSrc(defaultImageRestaurant);
-            }
-            }
+                switch (category) {
+                    case "arcade":
+                        setImageSrc(defaultImageArcade);
+                        break;
+                    case "bakery":
+                        setImageSrc(defaultImageBakery);
+                        break;
+                    case "bookstore":
+                        setImageSrc(defaultImageBookstore);
+                        break;
+                    case "coffeeshop":
+                        setImageSrc(defaultImageCoffeeshop);
+                        break;
+                    case "fair":
+                        setImageSrc(defaultImageFair); 
+                        break;
+                    case "fitness center":
+                        setImageSrc(defaultImageFitnessCenter); 
+                        break;
+                    case "garden center":
+                        setImageSrc(defaultImageGardenCenter); 
+                        break;
+                    case "hotel":
+                        setImageSrc(defaultImageHotel); 
+                        break;
+                    case "movie theater":
+                        setImageSrc(defaultImageMovieTheater); 
+                        break;
+                    case "nightclub":
+                        setImageSrc(defaultImageNightclub); 
+                        break;
+                    case "restaurant":
+                        setImageSrc(defaultImageRestaurant);
+                        break;
+                    case "retail store":
+                        setImageSrc(defaultImageRetailStore);
+                        break;
+                    case "supermarket":
+                        setImageSrc(defaultImageSupermarket);
+                        break;
+                    case "wellness center":
+                        setImageSrc(defaultImageWellnessCenter);
+                        break;            
+                    default:
+                        setImageSrc(defaultImageRestaurant);
+                }
+            };
         });
     };
 
