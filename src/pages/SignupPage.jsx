@@ -71,7 +71,7 @@ function SignupPage() {
         </label>
 
         <button type="submit" className="card block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40">Sign Up</button>
-        {errorMessage && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{errorMessage}</p>}
+        {errorMessage && <p className="block text-gray-700 text-md font-semibold mb-4 text-center mt-6">{errorMessage}</p>}
       </form>
 
     </div>
