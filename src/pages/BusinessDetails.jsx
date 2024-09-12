@@ -22,6 +22,7 @@ function BusinessDetails () {
     const [ imageSrc, setImageSrc ] = useState(null);
 
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     
     const getSpecificBusiness = () => {
         businessService.getBusiness(businessId)
@@ -55,12 +56,14 @@ function BusinessDetails () {
 
 
     const deleteBusiness = () => {
-        
-        businessService.deleteBusiness(businessId)
+        // Function can only be executed when the current logged in user is the user that created the business
+        if(currentBusiness.user === user._id){
+            businessService.deleteBusiness(businessId)
             .then((response) => {
                 navigate("/businesses");
             })
             .catch((err) => console.log(err));
+        }
     }
 
     const formatOpeningHours = (openingHours) => {
@@ -162,7 +165,8 @@ function BusinessDetails () {
                 </div>
 
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 max-h-96 flex flex-col md:flex-row items-center justify-center m-3">
-                    {isLoggedIn && !error  &&
+                    {/* Conditional rendering: if the user is logged in, there is no error, and the logged in user is also the user that created the business */}
+                    {isLoggedIn && !error && currentBusiness && 
                     
                         <>
                             <Link to={`/businesses/edit/${businessId}`}>

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import businessService from "../services/business.services";
 import NavBar from "../components/NavBar";
+import { AuthContext } from "../context/auth.context";
 
 function CreateBusiness() {
   const [ error, setError ] = useState(null);
@@ -29,6 +30,8 @@ function CreateBusiness() {
     sunTill: "",
   });
 
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -43,6 +46,7 @@ function CreateBusiness() {
       foundedYear,
       websiteURL,
       openingHours,
+      user,
     };
 
     businessService.createBusiness(requestBody)
