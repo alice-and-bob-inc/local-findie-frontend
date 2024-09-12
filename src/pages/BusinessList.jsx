@@ -108,7 +108,7 @@ function BusinessList () {
     return (
         <div className="min-w-full">
             <NavBar>
-                <div className="z-20 w-full mt-3 sm:w-auto text-xs flex justify-center sm:justify-start">
+                <div className="z-20 w-full mt-3 sm:w-auto text-xs lg:text-sm flex justify-center sm:justify-start">
                     <span>Search</span>
                     <input className="ml-3 w-56 sm:w-36 lg:w-60 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
                 </div>

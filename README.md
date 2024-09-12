@@ -1,10 +1,11 @@
-# Local Findie - Local Business Directory - Client
+# Local Findie - Local Business Directory - Frontend (React)
 
 ## Description
 
 Local Findie is a full-stack web application that helps users discover, review, and interact with local businesses. Users can search for businesses and leave reviews. The app provides search filters, making it easier to find businesses like restaurants, shops, or services in a specific area.
 
-This project is built with a React frontend and a Node.js/Express backend using MongoDB for data storage. It includes full CRUD functionality for businesses.
+THIS FRONTEND is built with React. It includes full CRUD functionality for businesses.
+
 
 You will find the Backend Repository with the setup instructions, here:
 
@@ -20,7 +21,7 @@ https://github.com/alice-and-bob-inc/local-findie-backend.git
 - Users can leave reviews and rate businesses.
 
 
-## Instructions to Run the App - Frontend
+## Instructions to Run the App - Frontend (React)
 
 
 1. Clone the Frontend Repository

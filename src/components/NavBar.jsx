@@ -19,24 +19,24 @@ function NavBar ({ children }) {
                     <div className="w-full md:ml-3 sm:w-auto flex justify-start sm:mb-3">{children}</div>
 
                     <div className="flex justify-end">
-                        <NavLink className="px-2 py-2 text-xs hover:text-white" to="/">Home</NavLink>
-                        <NavLink className="px-2 py-2 text-xs hover:text-white" to="/businesses">Businesses</NavLink>
+                        <NavLink className="px-2 py-2 text-xs lg:text-sm hover:text-white" to="/">Home</NavLink>
+                        <NavLink className="px-2 py-2 text-xs lg:text-sm  hover:text-white" to="/businesses">Businesses</NavLink>
                         
                         {isLoggedIn && (
-                            <NavLink className="px-2 py-2 text-xs hover:text-white" to="/businesses/create">Add Business</NavLink>
+                            <NavLink className="px-2 py-2 text-xs lg:text-sm hover:text-white" to="/businesses/create">Add Business</NavLink>
                         )}
                         
-                        <NavLink className="px-2 py-2 text-xs hover:text-white" to="/about">About</NavLink>
+                        <NavLink className="px-2 py-2 text-xs lg:text-sm hover:text-white" to="/about">About</NavLink>
                         
                         {!isLoggedIn && (
                             <>
-                                <NavLink className="px-2 py-2 text-xs hover:text-white" to="/signup">SignUp</NavLink>
-                                <NavLink className="px-2 py-2 text-xs hover:text-white" to="/login">Login</NavLink>
+                                <NavLink className="px-2 py-2 text-xs lg:text-sm hover:text-white" to="/signup">SignUp</NavLink>
+                                <NavLink className="px-2 py-2 text-xs lg:text-sm hover:text-white" to="/login">Login</NavLink>
                             </>
                         )}
 
                         {isLoggedIn && (
-                            <button className="px-2 py-2 text-xs hover:text-white" onClick={logOutUser}>Log out: {user.name}</button>
+                            <button className="px-2 py-2 text-xs lg:text-sm hover:text-white" onClick={logOutUser}>Log out: {user.name}</button>
                         )}
                     </div>
                 </div>
