@@ -16,9 +16,11 @@ function ReviewForm({ getSpecificBusinessReviews }) {
         e.preventDefault();
         const requestBody = {title, text, rating, author: user._id, business: businessId};
         reviewService.createReview(businessId, requestBody)
-            .then((response) => {navigate(`/businesses/${businessId}`)})
+            .then((response) => {
+                getSpecificBusinessReviews();
+                navigate(`/businesses/${businessId}`)})
             .catch((error) => {console.log(error)});
-        getSpecificBusinessReviews();
+        
         setText("");
         setTitle("");
         setRating("");
