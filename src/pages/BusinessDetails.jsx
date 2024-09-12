@@ -166,7 +166,7 @@ function BusinessDetails () {
 
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 max-h-96 flex flex-col md:flex-row items-center justify-center m-3">
                     {/* Conditional rendering: if the user is logged in, there is no error, and the logged in user is also the user that created the business */}
-                    {isLoggedIn && !error && currentBusiness && user._id == currentBusiness.user &&
+                    {isLoggedIn && !error && currentBusiness && 
                     
                         <>
                             <Link to={`/businesses/edit/${businessId}`}>

@@ -40,7 +40,7 @@ function EditBusiness () {
       .then((response) => {
         const currentBusiness = response.data;
         // Redirect user to businessDetail page if user is not the creator of currentBusiness
-        if(currentBusiness.user !== user._id){navigate(`/businesses/${currentBusiness._id}`)}
+        // if(currentBusiness.user !== user._id){navigate(`/businesses/${currentBusiness._id}`)}
 
         // Prefill the values that are currently stored in the database, in the form
         if (currentBusiness) {
