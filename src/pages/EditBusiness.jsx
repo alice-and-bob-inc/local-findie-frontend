@@ -64,6 +64,11 @@ function EditBusiness () {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let formattedWebsiteURL = websiteURL;
+    if (websiteURL && !websiteURL.startsWith("https://")) {
+      formattedWebsiteURL = "https://" + websiteURL;
+    }
+
     const requestBody = {
       name,
       imageURL,
@@ -71,7 +76,7 @@ function EditBusiness () {
       location,
       category,
       foundedYear,
-      websiteURL,
+      websiteURL: formattedWebsiteURL,
       openingHours,
       user
     };
