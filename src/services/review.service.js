@@ -25,6 +25,10 @@ class ReviewService{
     createReview = (id, requestBody) => {
         return this.api.post(`/api/businesses/${id}/reviews`, requestBody);
     };
+
+    deleteReview = (businessId, reviewId) => {
+        return this.api.delete(`/api/businesses/${businessId}/reviews/${reviewId}`)
+    }
 }
 
 const reviewService = new ReviewService();
