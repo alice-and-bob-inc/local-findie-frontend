@@ -40,9 +40,9 @@ function LoginPage() {
   };
 
   return (
-    <div className="pt-32">
+    <div>
       <NavBar/>
-      <form className="flex-col card box-border mx-auto max-w-sm w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12" onSubmit={loginRequest}>
+      <form className="flex-col card box-border mt-8 mx-auto max-w-sm w-10/12 sm:w-7/12 md:w-5/12 lg:w-4/12" onSubmit={loginRequest}>
         <label className="block text-gray-700 text-sm font-bold mb-4">
           E-mail
           <textarea

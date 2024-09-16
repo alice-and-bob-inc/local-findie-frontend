@@ -116,9 +116,9 @@ function CreateBusiness() {
   };
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pb-16">
       <NavBar/>
-      <div className="card box-border mx-auto w-11/12 sm:w-9/12 md:w-8/12 lg:w-6/12">
+      <div className="card box-border mt-8 mx-auto w-11/12 sm:w-9/12 md:w-8/12 lg:w-6/12">
         <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 
         <form className="flex-col" onSubmit={handleSubmit}>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import businessService from "../services/business.services";
 import NavBar from "../components/NavBar";
 import { AuthContext } from "../context/auth.context";
@@ -148,9 +148,9 @@ function EditBusiness () {
 
 
   return (
-    <div className="pt-24 pb-16">
+    <div className="pb-16">
       <NavBar/>
-      <div className="card box-border mx-auto w-11/12 sm:w-9/12 md:w-8/12 lg:w-6/12">
+      <div className="card box-border mt-8 mx-auto w-11/12 sm:w-9/12 md:w-8/12 lg:w-6/12">
         <h3 className="text-xl font-semibold mb-4">Add Business</h3>
 
         <form className="flex-col" onSubmit={handleSubmit}>
@@ -268,13 +268,19 @@ function EditBusiness () {
           </label>
 
           {renderOpeningHours()}
-
-          <button
-            className="block bg-blue-500 hover:bg-blue-700 text-white font-bold mx-auto py-2 px-4 mt-3 rounded focus:outline-black focus:shadow-outline min-w-40"
-            type="submit"
-          >
-            Update
-          </button>
+          <div className="box-border min-w-full sm:w-11/12 md:w-10/12 lg:w-8/12 max-h-96 flex flex-col md:flex-row items-center justify-center mt-4">
+            <button
+              className="block bg-green-500 hover:bg-green-700 text-white font-bold px-4 py-2 mx-1 rounded focus:outline-black focus:shadow-outline"
+              type="submit"
+              >
+              Update
+            </button>
+            <Link to={`/businesses/${businessId}`}>
+                <button className="card bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-1 px-4 mx-1 rounded focus:shadow-outline">
+                    Cancel
+                </button>
+            </Link>
+          </div>
         </form>
         {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">{error}</p>}
       </div>

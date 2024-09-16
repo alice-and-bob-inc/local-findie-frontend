@@ -170,8 +170,8 @@ function BusinessDetails () {
     return (
         <>  
             <NavBar/>
-            <div className="pt-20 flex flex-col items-center container mx-auto p-4">
-                <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 flex">
+            <div className="flex flex-col items-center container mx-auto">
+                <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 mt-8 flex">
                     {loading && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Loading...</p>}
                     {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6 mx-auto">Error fetching business from database</p>}
 

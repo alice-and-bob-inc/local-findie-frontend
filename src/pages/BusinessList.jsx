@@ -108,13 +108,13 @@ function BusinessList () {
     return (
         <div className="min-w-full">
             <NavBar>
-                <div className="z-20 w-full mt-3 sm:w-auto text-xs lg:text-sm flex justify-center sm:justify-start">
+                <div className="z-20 w-full mt-3 sm:w-auto text-xs lg:text-base flex justify-center sm:justify-start">
                     <span>Search</span>
-                    <input className="ml-3 w-56 sm:w-36 lg:w-60 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
+                    <input className="ml-3 w-56 sm:w-36 lg:w-80 mr-4 rounded-md px-2 focus:outline-black" value={query} type="search" onChange={e => setQuery(e.target.value)}/>
                 </div>
             </NavBar>
 
-            <div className="pt-24 pb-16 mx-5">
+            <div className="pt-8 pb-16 mx-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center">
                     {Array.isArray(filteredBusinesses) && filteredBusinesses.length > 0 
                     ? filteredBusinesses.reverse().map( (business) => {

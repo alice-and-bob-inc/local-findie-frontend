@@ -12,7 +12,6 @@ import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./components/Footer";
 
-import './App.css'
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 

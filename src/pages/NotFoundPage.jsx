@@ -3,9 +3,9 @@ import NavBar from "../components/NavBar";
 
 function NotFoundPage () {
     return (
-        <div className="pt-20 flex flex-col items-center container mx-auto p-4">
+        <div className="max-w-full flex flex-col items-center container mx-auto">
             <NavBar/>
-            <div className="card box-border w-10/12 min-h-96 m-3 p-12 flex flex-col">
+            <div className="card box-border w-10/12 min-h-96 m-3 mt-8 p-12 flex flex-col">
                 <h2  className="text-xl mb-3 font-semibold leading-loose">Oops! Page Not Found</h2>
 
                 <p className="leading-loose">It looks like you've wandered off the beaten path. The page you're looking for doesn't exist. But don't worry! You can still find your way back to discover amazing local businesses.</p>

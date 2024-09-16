@@ -5,9 +5,9 @@ function AboutPage () {
     const [ showFaces, setShowFaces ] = useState(false);
 
     return (
-        <div className="pt-20 pb-10 flex flex-col items-center container mx-auto text-center">
+        <div className="pb-10 flex max-w-full flex-col items-center container mx-0 text-center">
             <NavBar/>
-            <div className="card box-border w-10/12 min-h-96 m-3 p-12 flex flex-col">
+            <div className="card box-border w-10/12 min-h-96 m-3 mt-8 p-12 flex flex-col">
 
                 <p className="pb-4 sm:pb-6 md:pb-8 leading-loose">At Local Findie, we're passionate about connecting you with the best local businesses. Our mission is to make it easier for you to discover and support local gems, from restaurants and shops to services and more. We believe that every local business has a story to tell, and we're here to help you find it.</p>
                 <div className="w-full sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-4/12 mx-auto py-4 sm:py-6 md:py-8 leading-loose">
