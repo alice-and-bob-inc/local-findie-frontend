@@ -17,6 +17,7 @@ import defaultImageRetailStore from "/defaultImageRetailStore.jpg";
 import defaultImageSupermarket from "/defaultImageSupermarket.jpg";
 import defaultImageWellnessCenter from "/defaultImageWellnessCenter.jpg";
 import NavBar from "../components/NavBar";
+import reviewService from "../services/review.service";
 
 function BusinessList () {
 
@@ -24,8 +25,9 @@ function BusinessList () {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ query, setQuery ] = useState("");
+    const [ reviews, setReviews ] = useState(null);
     
-
+    // Variable used for the searchbar
     let filteredBusinesses;
 
 
@@ -42,11 +44,25 @@ function BusinessList () {
             });
     };
 
+    const getAllReviews = () => {
+        reviewService.getAllReviews()
+            .then((response) => {
+                setReviews(response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(error);
+            })
+   
+    };
+
     useEffect( () => {
         getAllBusinesses();
+        getAllReviews();
     }, []);
 
     if(Array.isArray(businesses)) {
+        // Function for filtering the businesses in the state variable based on the search query in the search bar
         filteredBusinesses = businesses.filter( (business) => {
            
             if(business.name && business.name.toLowerCase().includes(query.toLowerCase())){return true} else
@@ -57,6 +73,7 @@ function BusinessList () {
     }
 
     const handleImageError = (e, category) => {
+        // Function for getting a default image path for a business if there is no provided image or if the provided image is not valid
         switch (category) {
             case "arcade":
                 e.target.src = defaultImageArcade;
@@ -103,6 +120,19 @@ function BusinessList () {
         }
     
     };
+
+    const displayRating = (businessId) => {
+        // Function for displaying the average star rating based on the reviews for each business
+        let ratingSum = 0;
+        let filteredReviews = reviews.filter((review) => review.business._id == businessId)
+        for(let i=0; i<filteredReviews.length; i++){
+            ratingSum += filteredReviews[i].rating;
+        }
+        let rating = Math.floor(ratingSum / (filteredReviews.length ? filteredReviews.length : 1));        
+        let stars = `${"★".repeat(rating)}${"☆".repeat(5 - rating)}`;
+
+        return `${stars}(${filteredReviews.length})`;
+    }
 
 
     return (
@@ -161,8 +191,10 @@ function BusinessList () {
                                 <Link to={`/businesses/${business._id}`}>
                                     <h3 className="mb-5 text-lg font-semibold  text-gray-700">{business.name}</h3>
                                     <img className="mx-auto h-48 object-fill rounded-md" src={imageURL} alt="business image" onError={(e) => handleImageError(e, business.category)}/>
-                                    <p className="mt-7">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)}</p>
-                                    <p className="my-3">{business.location}</p>
+                                    <div className="flex justify-between pb-auto">
+                                        <p className="mt-7 text-sm md:text-base">{business.category.slice(0,1).toUpperCase() + business.category.slice(1)} in {business.location}</p>
+                                        {reviews && <p className="mt-7 text-sm md:text-base">{displayRating(business._id)}</p>}
+                                    </div>
                                 </Link> 
                             </div>
                         );

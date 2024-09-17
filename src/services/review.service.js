@@ -18,6 +18,10 @@ class ReviewService{
     }
 
 
+    getAllReviews = () => {
+        return this.api.get("/api/reviews");
+    }
+
     getReviews = (id) => {
         return this.api.get(`/api/businesses/${id}/reviews`);
     };
