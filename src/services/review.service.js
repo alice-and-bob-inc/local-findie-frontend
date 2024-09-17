@@ -26,6 +26,10 @@ class ReviewService{
         return this.api.get(`/api/businesses/${id}/reviews`);
     };
 
+    getUserReviews = (userId) => {
+        return this.api.get(`/api/reviews/user/${userId}`)
+    }
+
     createReview = (id, requestBody) => {
         return this.api.post(`/api/businesses/${id}/reviews`, requestBody);
     };

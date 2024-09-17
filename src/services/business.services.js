@@ -30,6 +30,10 @@ class BusinessService {
         return this.api.get(`/api/businesses/${id}`);
     };
 
+    getUserBusinesses = (userId) => {
+        return this.api.get(`/api/businesses/user/${userId}`)
+    }
+
     updateBusiness = (id, requestBody) => {
         return this.api.put(`/api/businesses/${id}`, requestBody);
     };

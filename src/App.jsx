@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -62,6 +63,11 @@ function App() {
         <Route 
           path="/about" 
           element={<AboutPage/>}
+        />
+
+        <Route 
+          path="/profile/:userId" 
+          element={ <IsPrivate> <ProfilePage/> </IsPrivate> }
         />
 
         <Route 

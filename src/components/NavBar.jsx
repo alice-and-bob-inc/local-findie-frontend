@@ -43,7 +43,9 @@ function NavBar ({ children }) {
                         )}
 
                         {isLoggedIn && (
-                            <button className="text-xs lg:text-base card bg-green-400 hover:bg-green-700 py-1 my-1 px-4 mx-1 rounded focus:shadow-outline" onClick={logOutUser}>Log out: {user.name}</button>
+                            // <button className="text-xs lg:text-base card bg-green-400 hover:bg-green-700 py-1 my-1 px-4 mx-1 rounded focus:shadow-outline" onClick={logOutUser}>{user.name}</button>
+                            <NavLink className="text-xs lg:text-base hover:text-white" to={`/profile/${user._id}`}><button className="card bg-green-400 hover:bg-green-700 py-1 my-1 px-4 mx-1 rounded focus:shadow-outline">{user.name}</button></NavLink>
+
                         )}
                     </div>
                 </div>
@@ -114,7 +116,7 @@ function NavBar ({ children }) {
                             
                             <li className="border-b border-gray-400 my-8 uppercase">
                                 {isLoggedIn && (
-                                    <button className="text-xs lg:text-base hover:text-white" onClick={logOutUser}>Log out: {user.name}</button>
+                                    <NavLink className="text-xs lg:text-base hover:text-white" to={`/profile/${user._id}`}>{user.name}</NavLink>
                                 )}
                             </li>
 
