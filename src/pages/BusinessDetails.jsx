@@ -20,18 +20,20 @@ import defaultImageRetailStore from "/defaultImageRetailStore.jpg";
 import defaultImageSupermarket from "/defaultImageSupermarket.jpg";
 import defaultImageWellnessCenter from "/defaultImageWellnessCenter.jpg";
 import NavBar from "../components/NavBar";
+import authService from "../services/auth.services";
 
 function BusinessDetails () {
     const [ currentBusiness, setCurrentBusiness ] = useState(null);
     const [ currentReviews, setCurrentReviews ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(null);
-    const { businessId } = useParams();
-    const { isLoggedIn } = useContext(AuthContext)
     const [ imageSrc, setImageSrc ] = useState(null);
-
+    const [ userInfo, setUserInfo ] = useState(null);
+    const [ isFavourite, setIsFavourite ] = useState(false);
+    
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+    const { isLoggedIn, user } = useContext(AuthContext)
+    const { businessId } = useParams();
     
     const getSpecificBusiness = () => {
         businessService.getBusiness(businessId)
@@ -42,6 +44,7 @@ function BusinessDetails () {
             })
             .catch((error) => {
                 setError(error);
+                console.log("here")
                 setLoading(false);
             });
     };
@@ -54,14 +57,36 @@ function BusinessDetails () {
             })
             .catch((error) => {
                 setError(error);
+                console.log("here")
                 setLoading(false);
             });
     };
 
+    const getFavourites = () => {
+        if(isLoggedIn && user && user._id){
+            authService.getUserInfo(user._id)
+                .then((response) => {
+                    const resUserInfo = response.data;
+                    setUserInfo(resUserInfo)
+                    displayFavourite(resUserInfo)
+                })
+                .catch((error) => {
+                    setError(error);
+                    console.log(error)
+                })
+        }
+    }
+
     useEffect(() => {
         getSpecificBusiness();
         getSpecificBusinessReviews();
-    }, [businessId]);
+
+    }, [user]);
+
+    useEffect(() => {
+        getFavourites();
+        displayFavourite(userInfo)
+    }, [currentBusiness])
 
 
     const deleteBusiness = () => {
@@ -74,6 +99,53 @@ function BusinessDetails () {
             .catch((err) => console.log(err));
         }
     }
+
+    const favouriteBusiness = () => {
+        // Updates the user object in the db for adding current business to favourites
+        let requestBody;
+        if(userInfo){
+            requestBody = { favourites: [...userInfo.favourites, currentBusiness._id] };
+        } else if(!userInfo) {
+            requestBody = { favourites: [currentBusiness._id] }
+        }
+            authService.updateUser(user._id, requestBody)
+                .then((response) => {
+                    setUserInfo(response.data)
+                    setIsFavourite(true)
+                })
+                .catch((error) => {
+                    setError(error);
+                    console.log("here")
+                })
+        
+    };
+
+    const unFavouriteBusiness = () => {
+        // Updates the user object in the db for removing current business from favourites
+        const filteredFavourites = userInfo.favourites.filter((favourite) => {return favourite !== currentBusiness._id})
+        const requestBody = { favourites: filteredFavourites };
+        authService.updateUser(user._id, requestBody)
+            .then((response) => {
+                setUserInfo(response.data);
+                setIsFavourite(false);
+            })
+            .catch((error) => {
+                setError(error);
+                console.log("here")
+            })
+    }
+
+    const displayFavourite = (userInformation) => {
+        // Checks if the provided user favourites contain the current business
+        if(userInformation && currentBusiness){
+            userInformation.favourites.forEach((favourite) => {
+                if(favourite == currentBusiness._id){
+                    setIsFavourite(true);
+                }
+            })
+        }
+    }
+    
 
     const deleteReview = (reviewId, authorId) => {
         // Function will only be executed when the current logged in user is the user that created the review
@@ -177,14 +249,29 @@ function BusinessDetails () {
             <NavBar/>
             <div className="flex flex-col items-center container mx-auto">
                 <div className="card box-border w-full sm:w-11/12 md:w-10/12 lg:w-8/12 min-h-96 m-3 mt-8 flex">
-                    {loading && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Loading...</p>}
-                    {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6 mx-auto">Error fetching business from database</p>}
+                    
 
 
                     {currentBusiness
                         && (
                             <div className="flex flex-col items-center">
-                                <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
+                                <div className="flex items-center w-full px-4 justify-between">
+                                    <h3 className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-semibold">{currentBusiness.name}</h3>
+
+                                    {loading && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6">Loading...</p>}
+                                    {error && <p className="block text-gray-700 text-lg font-semibold mb-4 text-center mt-6 mx-auto">Error fetching business from database</p>}
+
+                                    {isLoggedIn && !isFavourite &&
+                                        <button onClick={favouriteBusiness} className="card bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 my-1 px-4 mx-1 rounded focus:shadow-outline">
+                                            Favourite
+                                        </button>
+                                    }
+                                    {isLoggedIn && isFavourite &&
+                                        <button onClick={unFavouriteBusiness} className="card bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 my-1 px-4 mx-1 rounded focus:shadow-outline">
+                                            Un-Favourite
+                                        </button>
+                                    }
+                                </div>
 
                                 <div key={currentBusiness._id} className="w-full flex flex-col md:flex-row justify-around py-5">
                                     <div className="w-full sm:w-4/5 sm:mx-auto md:w-5/12">

@@ -27,6 +27,14 @@ class AuthService {
     verify = () => {
         return this.api.get("/auth/verify");
     };
+
+    updateUser = (userId, requestBody) => {
+        return this.api.put(`/auth/user/${userId}`, requestBody)
+    }
+
+    getUserInfo = (userId) => {
+        return this.api.get(`/auth/user/${userId}`)
+    }
 }
 
 const authService = new AuthService();

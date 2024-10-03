@@ -201,7 +201,7 @@ function BusinessList () {
                     }) 
                     : (loading 
                         ? <p className="card box-border mx-auto max-h-96 justify-center">Loading...</p> 
-                        : <p className="card box-border mx-auto max-h-96 justify-center">{error}</p>)
+                        : <p className="card box-border mx-auto max-h-96 justify-center">{error.message}</p>)
                     }
                 </div>
             </div>

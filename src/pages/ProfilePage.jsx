@@ -4,13 +4,16 @@ import NavBar from "../components/NavBar";
 import businessService from "../services/business.services";
 import reviewService from "../services/review.service";
 import { Link } from "react-router-dom";
+import authService from "../services/auth.services";
 
 
 export default function ProfilePage(){
     const [ businesses, setBusinesses ] = useState(null);
     const [ reviews, setReviews ] = useState(null);
     const [ error, setError ] = useState(null);
-    const { user, logOutUser } = useContext(AuthContext);
+    const [ favouritesId, setFavouritesId ] = useState(null);
+    const [ favourites, setFavourites ] = useState([]);
+    const { user, logOutUser, isLoggedIn } = useContext(AuthContext);
 
 
     const getUserBusinesses = () => {
@@ -33,10 +36,47 @@ export default function ProfilePage(){
             })
     }
 
+    const getFavouritesId = () => {
+        if(isLoggedIn && user && user._id){
+            authService.getUserInfo(user._id)
+                .then((response) => {
+                    const resUserInfo = response.data;
+                    setFavouritesId(resUserInfo);
+                    // getFavouriteBusinesses(resUserInfo);
+                })
+                .catch((error) => {
+                    setError(error);
+                    console.log(error)
+                })
+        }
+    }
+
+    const getFavouriteBusinesses = async (favouriteIds) => {
+        let newFavourites = [];
+        if (favouriteIds) {
+            try {
+                const favouritePromises = favouriteIds.favourites.map((id) =>
+                    businessService.getBusiness(id)
+                );
+                const favouriteResponses = await Promise.all(favouritePromises);
+                newFavourites = favouriteResponses.map((response) => response.data);
+                setFavourites(newFavourites);
+            } catch (error) {
+                setError(error);
+                console.log(error);
+            }
+        }
+    };
+
     useEffect( () => {
         getUserBusinesses();
         getUserReviews();
+        getFavouritesId();
     }, [])
+
+    useEffect(() => {
+        getFavouriteBusinesses(favouritesId)
+    }, [favouritesId])
 
     const displayRating = (rating) => {
         // Function for displaying the rating field in the review object as stars
@@ -71,7 +111,7 @@ export default function ProfilePage(){
             >
                 <h1 className="text-lg font-bold mb-4 w-full">Your Businesses</h1>
 
-                {businesses && businesses.map((business) => {
+                {businesses && businesses.length > 0 ? businesses.map((business) => {
                     return (
                         <Link key={business._id} to={`/businesses/${business._id}`} className="
                         bg-white shadow-md rounded-lg p-4 w-11/12 mb-2
@@ -84,8 +124,45 @@ export default function ProfilePage(){
                             <p className="text-sm text-gray-600">{business.category} in {business.location}</p>
                         </Link>
                     )
-                })}
+                }) : 
+                (<h1 className="mb-4">No Businesses yet.</h1>)
+                }
             </div>
+
+
+
+
+
+
+            <div className="
+                card shadow-md flex flex-col items-center rounded-lg mt-4 mx-6 p-6 mb-4
+                md:p-6 md:flex-row md:flex-wrap md:mx-12
+                lg:p-8 lg:flex-row lg:flex-wrap lg:mx-36"
+            >
+                <h1 className="text-lg font-bold mb-4 w-full">Your Favourites</h1>
+
+                {favourites && favourites.length > 0 ? favourites.map((favourite) => {
+                    return (
+                        <Link key={favourite._id} to={`/businesses/${favourite._id}`} className="
+                        bg-white shadow-md rounded-lg p-4 w-11/12 mb-2
+                        md:mx-auto md:w-5/12 md:mb-4
+                        lg:mx-auto lg:w-5/12 lg:mb-4
+                        hover:bg-green-200 hover:scale-105"
+                        >
+                            <p className="text-lg font-semibold">{favourite.name}</p>
+                            <hr className="my-2"/>
+                            <p className="text-sm text-gray-600">{favourite.category} in {favourite.location}</p>
+                        </Link>
+                    )
+                }) : 
+                (<h1 className="mb-4">No Favourites yet.</h1>)
+                }
+            </div>
+
+
+
+
+
 
 
             <div className="
