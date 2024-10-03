@@ -337,6 +337,7 @@ function BusinessDetails () {
                         <h3 className="text-xl md:text-2xl text-gray-700 font-semibold mb-4">Reviews</h3>
                         {currentReviews && currentReviews.length > 0 
                             ? (currentReviews.map((review) => {
+                                console.log()
                                 return(
                                     
                                     <div key={review._id} className="bg-white shadow-md rounded-lg p-4 mb-4 w-full">
